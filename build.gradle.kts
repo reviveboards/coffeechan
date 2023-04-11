@@ -2,6 +2,7 @@ plugins {
     id("java")
     application
     id("nu.studer.jooq") version "8.0" apply false
+    id("io.freefair.sass-java") version "8.0.1" apply false
 }
 
 group = "moe.crx"
@@ -17,6 +18,10 @@ application {
     mainClass.set("moe.crx.Starter")
 }
 
+tasks.getByName("run") {
+    dependsOn("compileSass")
+}
+
 allprojects {
     group = "moe.crx"
     version = "1.0-SNAPSHOT"
@@ -24,6 +29,7 @@ allprojects {
     apply {
         plugin("java")
         plugin("nu.studer.jooq")
+        plugin("io.freefair.sass-java")
     }
 
     repositories {
