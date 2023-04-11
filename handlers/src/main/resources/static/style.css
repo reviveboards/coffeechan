@@ -1,0 +1,89 @@
+body {
+    background-color: #282828;
+    font-family: 'Nunito Sans', sans-serif;
+    color: #FFFFFF;
+    padding: 0;
+    margin: 0;
+}
+
+/* Main page */
+
+.pageContent {
+    padding-left: 50px;
+}
+
+.boardsStrip {
+    background-color: #202020;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+}
+
+.stripContent {
+    padding-left: 50px;
+}
+
+.stripBoard {
+    display: inline-block;
+    padding-right: 5px;
+}
+
+.boardTitle {
+    padding-top: 20px;
+    font-weight: 800;
+    font-size: 70px;
+}
+
+.boardSlogan {
+    font-weight: 600;
+    color: #7C7C7C;
+    font-size: 24px;
+    padding: 20px 0 15px 0;
+}
+
+/* Board cards */
+
+.boardCard {
+    margin: 9px;
+    border-radius: 10px;
+    background-color: #282828;
+    display: inline-block;
+}
+
+.cardName {
+    padding-left: 9px;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.cardHeader {
+    padding: 6px;
+    background-color: #202020;
+    border-radius: 10px 10px 0 0;
+}
+
+.cardBullet {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 7px;
+    background-color: #42D2F2;
+}
+
+.cardContent {
+    padding: 9px;
+}
+
+.cardContent > * {
+    max-width: 40vh;
+    max-height: 40vh;
+    border-radius: 5px;
+}
+
+.boardLink {
+    display: inline-block;
+    float: right;
+    color: #7C7C7C;
+    font-weight: 600;
+}

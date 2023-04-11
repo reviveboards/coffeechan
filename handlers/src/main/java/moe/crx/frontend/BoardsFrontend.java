@@ -37,13 +37,21 @@ public final class BoardsFrontend implements Feature {
         var boardComponent = Jsoup.parse(getClass().getResourceAsStream("/frontend/components/board.html"), "UTF-8", uriInfo.getAbsolutePath().toString()).child(0);
 
         var boards = boardDao.all();
-        var boardsElement = boardsPage.getElementById("boards");
+        var boardsElements = boardsPage.getElementsByClass("coffeechan#boards");
         for (var board : boards) {
             var newComponent = boardComponent.clone();
-            newComponent.getElementById("boardLink").attr("href", uriInfo.getAbsolutePath().toString() + "/" + board.getTag());
-            newComponent.getElementById("boardName").append(board.getName());
-            boardsElement.appendChild(newComponent);
+
+            newComponent.getElementsByClass("abc").forEach((boardLink) ->
+                    boardLink.attr("href", uriInfo.getAbsolutePath().toString() + "/" + board.getTag()));
+            newComponent.getElementsByClass("abc").forEach((boardName) ->
+                    boardName.append(board.getName()));
+
+            boardsElements.forEach((boardsElement) ->
+                    boardsElement.appendChild(newComponent));
         }
+
+        boardsPage.getElementsByClass("coffeechan#title").forEach((boardName) ->
+                boardName.append("/nnchan"));
 
         return ok(boardsPage.html());
     }
