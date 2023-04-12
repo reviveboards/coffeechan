@@ -1,7 +1,6 @@
 package moe.crx.frontend.html.pages;
 
 import moe.crx.dto.Board;
-import moe.crx.frontend.html.AbstractComponent;
 import moe.crx.frontend.html.components.BoardList;
 import org.jetbrains.annotations.NotNull;
 import org.jsoup.Jsoup;
@@ -9,7 +8,7 @@ import org.jsoup.nodes.Element;
 
 import java.util.List;
 
-public final class BoardsPage extends AbstractComponent<BoardsPage> {
+public final class BoardsPage extends AbstractPage<BoardsPage> {
 
     private static final Element BASE;
 
@@ -23,11 +22,6 @@ public final class BoardsPage extends AbstractComponent<BoardsPage> {
 
     public BoardsPage() {
         super(BASE);
-
-        getElement().getElementsByClass("coffeechan#title").forEach(element ->
-                element.append("/nnchan"));
-        getElement().getElementsByClass("coffeechan#motd").forEach(element ->
-                element.append("New imageboard. Again."));
     }
 
     public @NotNull BoardsPage consumeBoardList(@NotNull BoardList boardList) {

@@ -1,6 +1,7 @@
 package moe.crx;
 
 import com.google.inject.Guice;
+import moe.crx.core.ConfigurationFactory;
 import moe.crx.core.CoreModule;
 import moe.crx.core.InputArgs;
 import moe.crx.core.ServerFactory;
@@ -20,6 +21,7 @@ public final class Starter {
                 new HandlersModule()
         );
 
+        injector.getInstance(ConfigurationFactory.class).getInstance(args.getConfigPath());
         injector.getInstance(Flyway.class).migrate();
 
         final var server = injector.getInstance(ServerFactory.class).getServer(80);

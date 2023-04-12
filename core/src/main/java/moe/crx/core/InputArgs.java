@@ -11,13 +11,14 @@ import org.jetbrains.annotations.NotNull;
 public final class InputArgs {
 
     private enum ParseState {
-        NONE, HOSTNAME, DBNAME, USERNAME, PASSWORD
+        NONE, HOSTNAME, DBNAME, USERNAME, PASSWORD, CONFIG_PATH
     }
 
     private String hostname;
     private String database;
     private String username;
     private String password;
+    private String configPath;
 
     @Inject public InputArgs(@NotNull @Named("consoleArgs") String[] args) {
         parse(args);
@@ -31,12 +32,14 @@ public final class InputArgs {
                 case "--dbname", "--name", "--db", "--database" -> state = ParseState.DBNAME;
                 case "--user", "--username", "--login" -> state = ParseState.USERNAME;
                 case "--pass", "--password" -> state = ParseState.PASSWORD;
+                case "--conf", "--config", "--configuration" -> state = ParseState.CONFIG_PATH;
                 default -> {
                     switch (state) {
                         case HOSTNAME -> hostname = arg;
                         case DBNAME -> database = arg;
                         case USERNAME -> username = arg;
                         case PASSWORD -> password = arg;
+                        case CONFIG_PATH -> configPath = arg;
                     }
                     state = ParseState.NONE;
                 }
@@ -62,6 +65,10 @@ public final class InputArgs {
         if (password == null) {
             System.out.println("Password is not declared, using standard (verystrongpassword). Use launch argument --password.");
             password = "verystrongpassword";
+        }
+        if (configPath == null) {
+            System.out.println("Config path is not declared, using standard (config.json). Use launch argument --config.");
+            configPath = "config.json";
         }
     }
 }

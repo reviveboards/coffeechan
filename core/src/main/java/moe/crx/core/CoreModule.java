@@ -16,6 +16,7 @@ public final class CoreModule extends AbstractModule {
     protected void configure() {
         bind(String[].class).annotatedWith(Names.named("consoleArgs")).toInstance(args);
         bind(ServerFactory.class);
+        bind(ConfigurationFactory.class);
         bind(InputArgs.class);
     }
 }
