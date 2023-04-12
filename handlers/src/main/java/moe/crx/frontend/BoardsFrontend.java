@@ -7,10 +7,8 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.*;
 import moe.crx.dao.BoardDao;
+import moe.crx.frontend.html.pages.BoardsPage;
 import org.jetbrains.annotations.NotNull;
-import org.jsoup.Jsoup;
-
-import java.io.IOException;
 
 import static moe.crx.handlers.Responser.ok;
 
@@ -32,26 +30,8 @@ public final class BoardsFrontend implements Feature {
 
     @GET
     @Produces(MediaType.TEXT_HTML)
-    public Response boards(@Context UriInfo uriInfo) throws IOException {
-        var boardsPage = Jsoup.parse(getClass().getResourceAsStream("/frontend/boards.html"), "UTF-8", uriInfo.getAbsolutePath().toString());
-        var boardComponent = Jsoup.parse(getClass().getResourceAsStream("/frontend/components/board.html"), "UTF-8", uriInfo.getAbsolutePath().toString()).child(0);
-
-        var boards = boardDao.all();
-        var boardsElements = boardsPage.getElementsByClass("coffeechan#boards");
-        for (var board : boards) {
-            var newComponent = boardComponent.clone();
-
-            newComponent.getElementsByClass("abc").forEach((boardLink) ->
-                    boardLink.attr("href", uriInfo.getAbsolutePath().toString() + "/" + board.getTag()));
-            newComponent.getElementsByClass("abc").forEach((boardName) ->
-                    boardName.append(board.getName()));
-
-            boardsElements.forEach((boardsElement) ->
-                    boardsElement.appendChild(newComponent));
-        }
-
-        boardsPage.getElementsByClass("coffeechan#title").forEach((boardName) ->
-                boardName.append("/nnchan"));
+    public Response boards() {
+        var boardsPage = new BoardsPage().consumeBoards(boardDao.all());
 
         return ok(boardsPage.html());
     }

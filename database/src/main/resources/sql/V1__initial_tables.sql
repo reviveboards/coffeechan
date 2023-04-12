@@ -40,9 +40,11 @@ CREATE TABLE public.images
 (
     id bigserial NOT NULL,
     url character varying NOT NULL,
+    squaredUrl character varying NOT NULL,
     filename character varying NOT NULL,
     width integer NOT NULL,
     height integer NOT NULL,
     fileSize bigint NOT NULL,
+    alt character varying NOT NULL,
     CONSTRAINT images_pk PRIMARY KEY (id)
 );

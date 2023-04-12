@@ -12,12 +12,12 @@ import moe.crx.jooq.tables.records.ImagesRecord;
 
 import org.jooq.Field;
 import org.jooq.ForeignKey;
-import org.jooq.Function6;
+import org.jooq.Function8;
 import org.jooq.Identity;
 import org.jooq.Name;
 import org.jooq.Record;
 import org.jooq.Records;
-import org.jooq.Row6;
+import org.jooq.Row8;
 import org.jooq.Schema;
 import org.jooq.SelectField;
 import org.jooq.Table;
@@ -61,6 +61,11 @@ public class Images extends TableImpl<ImagesRecord> {
     public final TableField<ImagesRecord, String> URL = createField(DSL.name("url"), SQLDataType.VARCHAR.nullable(false), this, "");
 
     /**
+     * The column <code>public.images.squaredurl</code>.
+     */
+    public final TableField<ImagesRecord, String> SQUAREDURL = createField(DSL.name("squaredurl"), SQLDataType.VARCHAR.nullable(false), this, "");
+
+    /**
      * The column <code>public.images.filename</code>.
      */
     public final TableField<ImagesRecord, String> FILENAME = createField(DSL.name("filename"), SQLDataType.VARCHAR.nullable(false), this, "");
@@ -79,6 +84,11 @@ public class Images extends TableImpl<ImagesRecord> {
      * The column <code>public.images.filesize</code>.
      */
     public final TableField<ImagesRecord, Long> FILESIZE = createField(DSL.name("filesize"), SQLDataType.BIGINT.nullable(false), this, "");
+
+    /**
+     * The column <code>public.images.alt</code>.
+     */
+    public final TableField<ImagesRecord, String> ALT = createField(DSL.name("alt"), SQLDataType.VARCHAR.nullable(false), this, "");
 
     private Images(Name alias, Table<ImagesRecord> aliased) {
         this(alias, aliased, null);
@@ -168,18 +178,18 @@ public class Images extends TableImpl<ImagesRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row6 type methods
+    // Row8 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row6<Long, String, String, Integer, Integer, Long> fieldsRow() {
-        return (Row6) super.fieldsRow();
+    public Row8<Long, String, String, String, Integer, Integer, Long, String> fieldsRow() {
+        return (Row8) super.fieldsRow();
     }
 
     /**
      * Convenience mapping calling {@link SelectField#convertFrom(Function)}.
      */
-    public <U> SelectField<U> mapping(Function6<? super Long, ? super String, ? super String, ? super Integer, ? super Integer, ? super Long, ? extends U> from) {
+    public <U> SelectField<U> mapping(Function8<? super Long, ? super String, ? super String, ? super String, ? super Integer, ? super Integer, ? super Long, ? super String, ? extends U> from) {
         return convertFrom(Records.mapping(from));
     }
 
@@ -187,7 +197,7 @@ public class Images extends TableImpl<ImagesRecord> {
      * Convenience mapping calling {@link SelectField#convertFrom(Class,
      * Function)}.
      */
-    public <U> SelectField<U> mapping(Class<U> toType, Function6<? super Long, ? super String, ? super String, ? super Integer, ? super Integer, ? super Long, ? extends U> from) {
+    public <U> SelectField<U> mapping(Class<U> toType, Function8<? super Long, ? super String, ? super String, ? super String, ? super Integer, ? super Integer, ? super Long, ? super String, ? extends U> from) {
         return convertFrom(toType, Records.mapping(from));
     }
 }

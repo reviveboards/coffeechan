@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 public final class ResourceHandlerFactory implements IHandlerFactory {
 
     public @NotNull Handler getHandler() {
-        var contextHandler = new ContextHandler("/");
+        var contextHandler = new ContextHandler("/static");
         var resourceHandler = new ResourceHandler();
         resourceHandler.setDirectoriesListed(false);
         resourceHandler.setBaseResource(Resource.newResource(getClass().getResource("/static")));

@@ -6,6 +6,26 @@ body {
     margin: 0;
 }
 
+.accent {
+    color: #42D2F2;
+}
+
+.blue {
+    color: #42D2F2;
+}
+
+.red {
+    color: #F24242;
+}
+
+.green {
+    color: #42F25E;
+}
+
+.yellow {
+    color: #EFF242;
+}
+
 /* Main page */
 
 .pageContent {
@@ -36,7 +56,7 @@ body {
 }
 
 .boardSlogan {
-    font-weight: 600;
+    font-weight: 700;
     color: #7C7C7C;
     font-size: 24px;
     padding: 20px 0 15px 0;
@@ -44,11 +64,12 @@ body {
 
 /* Board cards */
 
-.boardCard {
+.card {
     margin: 9px;
     border-radius: 10px;
     background-color: #282828;
     display: inline-block;
+    border: 1px solid #1C1C1C;
 }
 
 .cardName {
@@ -75,15 +96,76 @@ body {
     padding: 9px;
 }
 
-.cardContent > * {
-    max-width: 40vh;
-    max-height: 40vh;
-    border-radius: 5px;
-}
-
 .boardLink {
     display: inline-block;
     float: right;
     color: #7C7C7C;
     font-weight: 600;
+}
+
+/* Board list */
+
+.boardListEntry > a {
+    color: white;
+    text-decoration: none;
+}
+
+.entrySlashedTag {
+    font-weight: 900;
+    display: inline-block;
+}
+
+.entryName {
+    display: inline-block;
+    padding-left: 4px;
+}
+
+/* Posts */
+
+.postCard {
+    min-height: 15vh;
+}
+
+.postContent {
+    display: flex;
+    flex-direction: row;
+    gap: 9px;
+}
+
+.postImages {
+    flex: 0 1 auto;
+}
+
+.postImages > * {
+    object-fit: cover;
+    width: 20vh;
+    height: 20vh;
+    border-radius: 5px;
+    background-color: #202020;
+}
+
+.postTextContent {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.postTitle {
+    font-weight: 700;
+    flex: 0 1 auto;
+}
+
+.postMessage {
+    flex: 1 1 auto;
+}
+
+.postReplies {
+    font-weight: 300;
+    flex: 0 1 auto;
+}
+
+.postReply {
+    display: inline-block;
+    padding-right: 4px;
 }

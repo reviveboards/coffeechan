@@ -17,34 +17,42 @@ public class Images implements Serializable {
 
     private final Long id;
     private final String url;
+    private final String squaredurl;
     private final String filename;
     private final Integer width;
     private final Integer height;
     private final Long filesize;
+    private final String alt;
 
     public Images(Images value) {
         this.id = value.id;
         this.url = value.url;
+        this.squaredurl = value.squaredurl;
         this.filename = value.filename;
         this.width = value.width;
         this.height = value.height;
         this.filesize = value.filesize;
+        this.alt = value.alt;
     }
 
     public Images(
         Long id,
         String url,
+        String squaredurl,
         String filename,
         Integer width,
         Integer height,
-        Long filesize
+        Long filesize,
+        String alt
     ) {
         this.id = id;
         this.url = url;
+        this.squaredurl = squaredurl;
         this.filename = filename;
         this.width = width;
         this.height = height;
         this.filesize = filesize;
+        this.alt = alt;
     }
 
     /**
@@ -59,6 +67,13 @@ public class Images implements Serializable {
      */
     public String getUrl() {
         return this.url;
+    }
+
+    /**
+     * Getter for <code>public.images.squaredurl</code>.
+     */
+    public String getSquaredurl() {
+        return this.squaredurl;
     }
 
     /**
@@ -89,6 +104,13 @@ public class Images implements Serializable {
         return this.filesize;
     }
 
+    /**
+     * Getter for <code>public.images.alt</code>.
+     */
+    public String getAlt() {
+        return this.alt;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -109,6 +131,12 @@ public class Images implements Serializable {
                 return false;
         }
         else if (!this.url.equals(other.url))
+            return false;
+        if (this.squaredurl == null) {
+            if (other.squaredurl != null)
+                return false;
+        }
+        else if (!this.squaredurl.equals(other.squaredurl))
             return false;
         if (this.filename == null) {
             if (other.filename != null)
@@ -134,6 +162,12 @@ public class Images implements Serializable {
         }
         else if (!this.filesize.equals(other.filesize))
             return false;
+        if (this.alt == null) {
+            if (other.alt != null)
+                return false;
+        }
+        else if (!this.alt.equals(other.alt))
+            return false;
         return true;
     }
 
@@ -143,10 +177,12 @@ public class Images implements Serializable {
         int result = 1;
         result = prime * result + ((this.id == null) ? 0 : this.id.hashCode());
         result = prime * result + ((this.url == null) ? 0 : this.url.hashCode());
+        result = prime * result + ((this.squaredurl == null) ? 0 : this.squaredurl.hashCode());
         result = prime * result + ((this.filename == null) ? 0 : this.filename.hashCode());
         result = prime * result + ((this.width == null) ? 0 : this.width.hashCode());
         result = prime * result + ((this.height == null) ? 0 : this.height.hashCode());
         result = prime * result + ((this.filesize == null) ? 0 : this.filesize.hashCode());
+        result = prime * result + ((this.alt == null) ? 0 : this.alt.hashCode());
         return result;
     }
 
@@ -156,10 +192,12 @@ public class Images implements Serializable {
 
         sb.append(id);
         sb.append(", ").append(url);
+        sb.append(", ").append(squaredurl);
         sb.append(", ").append(filename);
         sb.append(", ").append(width);
         sb.append(", ").append(height);
         sb.append(", ").append(filesize);
+        sb.append(", ").append(alt);
 
         sb.append(")");
         return sb.toString();
