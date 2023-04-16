@@ -15,4 +15,5 @@ public final class Board {
     private boolean visible;
     private boolean locked;
     private boolean nsfw;
+    private long headerImage;
 }
