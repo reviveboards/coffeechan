@@ -1,52 +1,54 @@
+@import "basalt.scss";
+
 body {
-    background-color: #282828;
+    background-color: $main;
     font-family: 'Nunito Sans', sans-serif;
-    color: #FFFFFF;
+    color: $white;
     padding: 0;
     margin: 0;
+
+    display: flex;
+    flex-direction: column;
 }
 
-.accent {
-    color: #42D2F2;
-}
-
-.blue {
-    color: #42D2F2;
-}
-
-.red {
-    color: #F24242;
-}
-
-.green {
-    color: #42F25E;
-}
-
-.yellow {
-    color: #EFF242;
-}
 
 /* Main page */
 
-.pageContent {
-    padding-left: 50px;
-}
 
-.boardsStrip {
-    background-color: #202020;
+.boardList {
+    display: block;
+
+    background-color: $less_darker;
     font-weight: 600;
     font-size: 18px;
     padding: 0;
     margin: 0;
 }
 
-.stripContent {
-    padding-left: 50px;
+@media only screen and (max-width: 400px) {
+    .boardList {
+        display: none;
+    }
+    .boardAd {
+        display: none;
+    }
 }
 
-.stripBoard {
-    display: inline-block;
-    padding-right: 5px;
+.listContent {
+    display: flex;
+    flex-direction: row;
+}
+
+mainPageHeading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.naming {
+    display: flex;
+    flex-direction: column;
 }
 
 .boardTitle {
@@ -57,19 +59,29 @@ body {
 
 .boardSlogan {
     font-weight: 700;
-    color: #7C7C7C;
+    color: $subcolor;
     font-size: 24px;
     padding: 20px 0 15px 0;
 }
 
 /* Board cards */
 
+.panels {
+    display: flex;
+    flex-direction: row;
+}
+
+.leftContent {
+    display: flex;
+    flex-direction: column;
+}
+
 .card {
     margin: 9px;
     border-radius: 10px;
-    background-color: #282828;
+    background-color: $main;
     display: inline-block;
-    border: 1px solid #1C1C1C;
+    border: 1px solid $dark;
 }
 
 .cardName {
@@ -80,7 +92,7 @@ body {
 
 .cardHeader {
     padding: 6px;
-    background-color: #202020;
+    background-color: $less_darker;
     border-radius: 10px 10px 0 0;
 }
 
@@ -89,7 +101,7 @@ body {
     width: 14px;
     height: 14px;
     border-radius: 7px;
-    background-color: #42D2F2;
+    background-color: $blue;
 }
 
 .cardContent {
@@ -99,7 +111,7 @@ body {
 .boardLink {
     display: inline-block;
     float: right;
-    color: #7C7C7C;
+    color: $subcolor;
     font-weight: 600;
 }
 
@@ -141,7 +153,7 @@ body {
     width: 20vh;
     height: 20vh;
     border-radius: 5px;
-    background-color: #202020;
+    background-color: $less_darker;
 }
 
 .postTextContent {
@@ -168,4 +180,9 @@ body {
 .postReply {
     display: inline-block;
     padding-right: 4px;
+}
+
+footer {
+    background-color: $less_darker;
+    text-align: center;
 }
