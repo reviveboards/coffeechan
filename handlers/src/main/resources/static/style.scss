@@ -1,5 +1,8 @@
 @import "basalt.scss";
 
+$radius: 9px;
+$p: 13px;
+
 body {
     background-color: $main;
     font-family: 'Nunito Sans', sans-serif;
@@ -25,7 +28,19 @@ body {
     margin: 0;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 900px) {
+    .boardAd {
+        display: none;
+    }
+}
+
+.pageContent {
+    margin: 0 3.125rem 0 3.125rem;
+}
+
+/* Mobile CSS */
+
+@media only screen and (max-width: 500px) {
     .boardList {
         display: none;
     }
@@ -34,25 +49,29 @@ body {
     }
 }
 
+/**/
+
+.naming {
+    margin-top: 1.688rem;
+    margin-left: 0.938rem;
+    display: flex;
+    flex-direction: column;
+}
+
 .listContent {
     display: flex;
     flex-direction: row;
 }
 
-mainPageHeading {
+.mainPageHeading {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-.naming {
-    display: flex;
-    flex-direction: column;
-}
-
 .boardTitle {
-    padding-top: 20px;
+    //padding-top: 20px;
     font-weight: 800;
     font-size: 70px;
 }
@@ -61,7 +80,7 @@ mainPageHeading {
     font-weight: 700;
     color: $subcolor;
     font-size: 24px;
-    padding: 20px 0 15px 0;
+    margin: 15px 0 27px 0;
 }
 
 /* Board cards */
@@ -77,35 +96,56 @@ mainPageHeading {
 }
 
 .card {
-    margin: 9px;
-    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
     background-color: $main;
-    display: inline-block;
-    border: 1px solid $dark;
-}
+    border: 2px solid $dark;
+    border-radius: $radius;
 
-.cardName {
-    padding-left: 9px;
-    display: inline-block;
-    font-weight: 600;
 }
 
 .cardHeader {
-    padding: 6px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bolder;
+
+    gap: 7.7rem;
+
+    padding: $p/2.5 $p $p/2.5 $p;
+
     background-color: $less_darker;
-    border-radius: 10px 10px 0 0;
+
+}
+
+.cardHeader p {
+    margin: 0;
 }
 
 .cardBullet {
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    border-radius: 7px;
+    width: 16px;
+    height: 16px;
+
+    border-radius: 9px;
+
     background-color: $blue;
 }
 
-.cardContent {
-    padding: 9px;
+.cardName {
+    margin-right: 15rem;
+}
+
+.cardNavigate {
+    color: $subcolor;
+    text-decoration: underline;
+    text-align: right;
+}
+
+.cardContent{
+    margin: $p;
+    text-align: center;
 }
 
 .boardLink {
@@ -185,4 +225,5 @@ mainPageHeading {
 footer {
     background-color: $less_darker;
     text-align: center;
+    color: $subcolor;
 }
