@@ -1,4 +1,4 @@
-@import "basalt.scss";
+@import "themes/basalt";
 
 $radius: 15px;
 $p: 13px;
@@ -38,13 +38,30 @@ body {
 
 
 .boardList {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    position: sticky;
+    top: 0;
 
     background-color: $less_darker;
     font-weight: 600;
     font-size: 18px;
-    padding: 0;
+    padding: 0 3.125rem 0 3.125rem;
     margin: 0;
+}
+
+.maintenanceList {
+    margin-left: auto;
+}
+
+a {
+    color: $white;
+    text-decoration: none;
+}
+
+a:visited {
+    color: $white;
+    text-decoration: none;
 }
 
 @media only screen and (max-width: 900px) {
