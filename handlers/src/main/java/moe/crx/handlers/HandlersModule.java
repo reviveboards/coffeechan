@@ -6,6 +6,7 @@ import com.google.inject.multibindings.Multibinder;
 import jakarta.ws.rs.core.Feature;
 import moe.crx.api.BoardsREST;
 import moe.crx.api.PostsREST;
+import moe.crx.frontend.AdminPanelFrontend;
 import moe.crx.frontend.BoardFrontend;
 import moe.crx.frontend.BoardsFrontend;
 import org.glassfish.jersey.jackson.JacksonFeature;
@@ -24,6 +25,7 @@ public final class HandlersModule extends AbstractModule {
         irestMultibinder.addBinding().to(PostsREST.class);
         irestMultibinder.addBinding().to(BoardsFrontend.class);
         irestMultibinder.addBinding().to(BoardFrontend.class);
+        irestMultibinder.addBinding().to(AdminPanelFrontend.class);
 
         Multibinder<IHandlerFactory> factoryMultibinder = Multibinder.newSetBinder(binder(), IHandlerFactory.class);
         factoryMultibinder.addBinding().to(ResourceHandlerFactory.class);
