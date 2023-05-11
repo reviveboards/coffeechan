@@ -2,7 +2,7 @@
 
 $radius: 15px;
 $p: 13px;
-$down-shadow: 0px 1px 4px 3px rgba(0, 0, 0, 0.4);
+$down-shadow: 0px 1px 4px 3px rgba(0, 0, 0, 0.15);
 $sidedown-shadow: 1px 1px 4px 3px rgba(0, 0, 0, 0.15);
 $card-margin: 1.5rem;
 $contm: 3.125rem;
@@ -34,6 +34,10 @@ body {
 
 .red {
     background-color: $red;
+}
+
+.purple {
+    background-color: $purple;
 }
 /* Main page */
 
@@ -157,8 +161,6 @@ a:visited {
     align-items: center;
     justify-content: flex-start;
 
-
-
     border-radius: 13px 13px 0 0;
     font-weight: bolder;
     gap: 0.7rem;
@@ -191,7 +193,7 @@ a:visited {
 
 .cardContent{
     margin: 12px;
-    text-align: center;
+    text-align: left;
 }
 
 .cardContent > img {
@@ -230,6 +232,18 @@ a:visited {
 
 .postCard {
     min-height: 15vh;
+
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    background-color: $main;
+    border: 2px solid $dark;
+    border-radius: $radius;
+    margin: 0 0 $p 0;
+
+    -webkit-box-shadow: $down-shadow;
+    -moz-box-shadow: $down-shadow;
+    box-shadow: $down-shadow;
 }
 
 .postContent {
@@ -274,6 +288,12 @@ a:visited {
 .postReply {
     display: inline-block;
     padding-right: 4px;
+}
+
+textarea {
+    resize: none;
+    padding: $p/2;
+    border-radius: $radius/2;
 }
 
 footer {

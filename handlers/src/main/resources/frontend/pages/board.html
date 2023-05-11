@@ -23,30 +23,65 @@
             <div class="boardSplash">
                 <p class="boardName coffeechan#title"></p>
             </div>
-            <div class="card postForm">
+
+            <div class="panels"><div class="leftContent">
+                <div class="card postForm">
                 <span class="cardHeader">
                     <span class="red cardBullet"></span>
                     <p class="cardName">Post form</p>
                 </span>
-                <input type="text" name="postHeading" id="pH" placeholder="Title">
-                <input type="text" name="postText" id="pT" placeholder="Type your text here..">
-                <input type="file" name="postAttach" id="pA">
-                <input type="password" name="tripcode" id="trip" placeholder="Tripcode (unnecessary)">
-                <input type="button" value="Check">
-                <input type="button" value="Post">
-                <progress value="10" max="100" class="postingProgress">10%</progress>
+                    <input type="text" name="postHeading" id="pH" placeholder="Title">
+                    <textarea type="text" name="postText" id="pT" placeholder="Type your text here.." autofocus></textarea>
+                    <input type="file" name="postAttach" id="pA"> <!--TODO: Drag&drop file upload-->
+                    <input type="password" name="tripcode" id="trip" placeholder="Tripcode (unnecessary)">
+                    <input type="button" value="Check">
+                    <input type="button" value="Post">
+                    <progress value="10" max="100" class="postingProgress">10%</progress>
 
-            </div>
-            <div class="card postHandler">
+                </div>
+                <div class="card">
                 <span class="cardHeader">
                     <span class="yellow cardBullet"></span>
                     <p class="cardName">Latest posts</p>
                 </span>
-                <div class="coffeechan#posts">
+                    <div class="postHandler cardContent">
+                        <div class="coffeechan#posts">
+
+                        </div>
+                    </div>
 
                 </div>
             </div>
-
+                <div class="rightContent">
+                    <div class="card">
+                    <span class="cardHeader">
+                        <span class="blue cardBullet"></span>
+                        <p class="cardName">Board of the day</p>
+                    </span>
+                        <div class="cardContent">
+                            []
+                        </div>
+                    </div>
+                    <div class="card">
+                    <span class="cardHeader">
+                        <span class="purple cardBullet"></span>
+                        <p class="cardName">Marked threads</p>
+                    </span>
+                        <div class="cardContent">
+                            []
+                        </div>
+                    </div>
+                    <div class="card">
+                    <span class="cardHeader">
+                        <span class="green cardBullet"></span>
+                        <p class="cardName">Viewed threads</p>
+                    </span>
+                        <div class="cardContent">
+                            []
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
