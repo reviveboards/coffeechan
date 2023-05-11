@@ -5,6 +5,7 @@ $p: 13px;
 $down-shadow: 0px 1px 4px 3px rgba(0, 0, 0, 0.4);
 $sidedown-shadow: 1px 1px 4px 3px rgba(0, 0, 0, 0.15);
 $card-margin: 1.5rem;
+$contm: 3.125rem;
 
 body {
     background-color: $main;
@@ -64,23 +65,18 @@ a:visited {
     text-decoration: none;
 }
 
-@media only screen and (max-width: 900px) {
-    .boardAd {
-        display: none;
-    }
-}
 
 .pageContent {
-    margin: 0 3.125rem 0 3.125rem;
+    margin: 1.688rem $contm 0 $contm;
 }
 
 /* Mobile CSS */
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 900px) {
     .boardList {
         display: none;
     }
-    .boardAd {
+    .boardSplash {
         display: none;
     }
 }
@@ -88,7 +84,6 @@ a:visited {
 /**/
 
 .naming {
-    margin-top: 1.688rem;
     margin-left: 0.938rem;
     display: flex;
     flex-direction: column;
@@ -117,6 +112,18 @@ a:visited {
     color: $subcolor;
     font-size: 24px;
     margin: 15px 0 27px 0;
+}
+
+.boardSplash {
+    padding: $p;
+    background-color: $main;
+
+    border: 2px solid $dark;
+    border-radius: $radius;
+    -webkit-box-shadow: $sidedown-shadow;
+    -moz-box-shadow: $sidedown-shadow;
+    box-shadow: $sidedown-shadow;
+
 }
 
 /* Board cards */

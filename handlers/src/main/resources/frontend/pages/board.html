@@ -1,5 +1,10 @@
-<html>
+<!doctype html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link href="/static/style.css" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -7,19 +12,41 @@
         <title class="coffeechan#title"></title>
     </head>
     <body>
-        <div class="boardsStrip">
-            <div class="stripContent">
+        <div class="boardList">
+            <div class="listContent">
                 <div class="stripBoard">/b/</div>
                 <div class="stripBoard">/soc/</div>
                 <div class="stripBoard">/pol/</div>
             </div>
         </div>
         <div class="pageContent">
-            <div class="boardTitle coffeechan#title"></div>
-            <div class="boardSlogan coffeechan#motd"></div>
-            <div class="coffeechan#posts">
+            <div class="boardSplash">
+                <p class="boardName coffeechan#title"></p>
+            </div>
+            <div class="card postForm">
+                <span class="cardHeader">
+                    <span class="red cardBullet"></span>
+                    <p class="cardName">Post form</p>
+                </span>
+                <input type="text" name="postHeading" id="pH" placeholder="Title">
+                <input type="text" name="postText" id="pT" placeholder="Type your text here..">
+                <input type="file" name="postAttach" id="pA">
+                <input type="password" name="tripcode" id="trip" placeholder="Tripcode (unnecessary)">
+                <input type="button" value="Check">
+                <input type="button" value="Post">
+                <progress value="10" max="100" class="postingProgress">10%</progress>
 
             </div>
+            <div class="card postHandler">
+                <span class="cardHeader">
+                    <span class="yellow cardBullet"></span>
+                    <p class="cardName">Latest posts</p>
+                </span>
+                <div class="coffeechan#posts">
+
+                </div>
+            </div>
+
         </div>
     </body>
 </html>
