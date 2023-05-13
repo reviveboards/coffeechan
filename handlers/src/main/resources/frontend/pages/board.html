@@ -24,35 +24,43 @@
                 <p class="boardName coffeechan#title"></p>
             </div>
 
-            <div class="panels"><div class="leftContent">
-                <div class="card postForm">
-                <span class="cardHeader">
-                    <span class="red cardBullet"></span>
-                    <p class="cardName">Post form</p>
-                </span>
-                    <input type="text" name="postHeading" id="pH" placeholder="Title">
-                    <textarea type="text" name="postText" id="pT" placeholder="Type your text here.." autofocus></textarea>
-                    <input type="file" name="postAttach" id="pA"> <!--TODO: Drag&drop file upload-->
-                    <input type="password" name="tripcode" id="trip" placeholder="Tripcode (unnecessary)">
-                    <input type="button" value="Check">
-                    <input type="button" value="Post">
-                    <progress value="10" max="100" class="postingProgress">10%</progress>
+            <div class="panels">
+                <div class="boardLeftContent">
+                    <div class="card postForm">
+                    <span class="cardHeader">
+                        <span class="red cardBullet"></span>
+                        <p class="cardName">Post form</p>
+                    </span>
+                        <form class="postFormHandler">
+                            <div class="typing">
+                                <input type="text" name="postHeading" id="pH" placeholder="Title">
+                                <textarea type="text" name="postText" id="pT" placeholder="Type your text here.." autofocus></textarea>
 
-                </div>
-                <div class="card">
-                <span class="cardHeader">
-                    <span class="yellow cardBullet"></span>
-                    <p class="cardName">Latest posts</p>
-                </span>
-                    <div class="postHandler cardContent">
-                        <div class="coffeechan#posts">
+                                <div class="functional">
+                                    <input type="password" name="tripcode" id="trip" placeholder="Tripcode (unnecessary)">
+                                    <input type="button" value="Check">
+                                </div>
+                            </div>
+                            <div class="posting">
+                                <input type="file" name="postAttach" id="pA"> <!--TODO: Drag&drop file upload-->
+                                <progress value="10" max="100" class="postingProgress">10%</progress>
+                                <input type="button" value="Post">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card">
+                    <span class="cardHeader">
+                        <span class="yellow cardBullet"></span>
+                        <p class="cardName">Latest posts</p>
+                    </span>
+                        <div class="postHandler cardContent">
+                            <div class="coffeechan#posts">
 
+                            </div>
                         </div>
                     </div>
-
-                </div>
             </div>
-                <div class="rightContent">
+                <div class="boardRightContent">
                     <div class="card">
                     <span class="cardHeader">
                         <span class="blue cardBullet"></span>
