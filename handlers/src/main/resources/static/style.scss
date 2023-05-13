@@ -2,7 +2,7 @@
 
 $radius: 15px;
 $p: 13px;
-$down-shadow: 0px 1px 4px 3px rgba(0, 0, 0, 0.4);
+$down-shadow: 0px 1px 4px 3px rgba(0, 0, 0, 0.15);
 $sidedown-shadow: 1px 1px 4px 3px rgba(0, 0, 0, 0.15);
 $card-margin: 1.5rem;
 $contm: 3.125rem;
@@ -34,6 +34,10 @@ body {
 
 .red {
     background-color: $red;
+}
+
+.purple {
+    background-color: $purple;
 }
 /* Main page */
 
@@ -136,6 +140,25 @@ a:visited {
 .leftContent {
     display: flex;
     flex-direction: column;
+    margin-right: $card-margin;
+}
+
+.rightContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.boardLeftContent {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-right: $card-margin;
+}
+
+.boardRightContent {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
 }
 
 .card {
@@ -144,7 +167,7 @@ a:visited {
     background-color: $main;
     border: 2px solid $dark;
     border-radius: $radius;
-    margin: 0 $card-margin $card-margin 0;
+    margin: 0 0 $card-margin 0;
 
     -webkit-box-shadow: $sidedown-shadow;
     -moz-box-shadow: $sidedown-shadow;
@@ -156,8 +179,6 @@ a:visited {
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-
-
 
     border-radius: 13px 13px 0 0;
     font-weight: bolder;
@@ -191,7 +212,7 @@ a:visited {
 
 .cardContent{
     margin: 12px;
-    text-align: center;
+    text-align: left;
 }
 
 .cardContent > img {
@@ -226,10 +247,49 @@ a:visited {
     padding-left: 4px;
 }
 
+.postFormHandler {
+    margin: 12px;
+    display: flex;
+    flex-direction: row;
+}
+
+.typing {
+    display: flex;
+    flex-direction: column;
+}
+
+.posting {
+    display: flex;
+    flex-direction: column;
+}
+
+.functional {
+    display: flex;
+    flex-direction: row;
+}
+
 /* Posts */
+
+.postHandler {
+    display: flex;
+    flex-direction: column;
+    //gap: $p;
+}
 
 .postCard {
     min-height: 15vh;
+
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    background-color: $main;
+    border: 2px solid $dark;
+    border-radius: $radius;
+    margin: 0;
+
+    -webkit-box-shadow: $down-shadow;
+    -moz-box-shadow: $down-shadow;
+    box-shadow: $down-shadow;
 }
 
 .postContent {
@@ -274,6 +334,12 @@ a:visited {
 .postReply {
     display: inline-block;
     padding-right: 4px;
+}
+
+textarea {
+    resize: none;
+    padding: $p/2;
+    border-radius: $radius/2;
 }
 
 footer {

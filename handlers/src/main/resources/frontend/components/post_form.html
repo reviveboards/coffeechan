@@ -1,0 +1,22 @@
+<div class="card postForm">
+                    <span class="cardHeader">
+                        <span class="red cardBullet"></span>
+                        <p class="cardName">Post form</p>
+                    </span>
+  <form class="postFormHandler">
+    <div class="typing">
+      <input type="text" name="postHeading" id="pH" placeholder="Title">
+      <textarea type="text" name="postText" id="pT" placeholder="Type your text here.." autofocus></textarea>
+
+      <div class="functional">
+        <input type="password" name="tripcode" id="trip" placeholder="Tripcode (unnecessary)">
+        <input type="button" value="Check">
+      </div>
+    </div>
+    <div class="posting">
+      <input type="file" name="postAttach" id="pA"> <!--TODO: Drag&drop file upload-->
+      <progress value="10" max="100" class="postingProgress">10%</progress>
+      <input type="button" value="Post">
+    </div>
+  </form>
+</div>
