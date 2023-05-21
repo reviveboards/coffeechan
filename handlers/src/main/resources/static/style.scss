@@ -256,16 +256,20 @@ a:visited {
 .typing {
     display: flex;
     flex-direction: column;
+    gap: 5px;
 }
 
 .posting {
     display: flex;
     flex-direction: column;
+    gap: 5px;
+    margin-left: auto;
 }
 
 .functional {
     display: flex;
     flex-direction: row;
+    gap: 5px;
 }
 
 /* Posts */
@@ -341,6 +345,47 @@ textarea {
     padding: $p/2;
     border-radius: $radius/2;
 }
+
+/*Admin panel*/
+
+.adminList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.boardMgrBoard {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $p/2;
+    margin: $card-margin/2;
+    gap: 2rem;
+}
+
+.boardMgrBoard a:hover {
+    color: $blue;
+    cursor: pointer;
+}
+
+.boardMgrEditButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 0.6rem;
+}
+
+#boardMgrCreateNew {
+    color: $blue;
+}
+
+.boardMgrDeleteButton:hover {
+    color: $red;
+}
+
+.boardMgrEditButton:hover {
+    color: $yellow;
+}
+
+/**/
 
 footer {
     background-color: $less_darker;
