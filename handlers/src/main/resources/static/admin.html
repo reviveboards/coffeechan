@@ -12,7 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <title class="coffechan#title"></title>
 
-    <script defer src="/static/js/jquery-3.6.4.min.js"></script>
+    <script src="/static/js/jquery-3.6.4.min.js"></script>
+    <script src="/static/js/adminFE.js"></script>
 </head>
 <body>
     <div class="boardList">
@@ -118,13 +119,32 @@
                                     </div>
                                 </div>
                             </div>
-                            <a id="boardMgrCreateNew">+ Create new</a>
+                            <button id="boardMgrCreateNew">+ Create new</button>
                         </div>
-                        <div class="postFormHandler">
-                            <label class="switch">
-                                <input type="checkbox">
-                                <span class="slider round"></span>
-                            </label>
+
+                        <div class="card" id="boardMgrCreateForm" style="margin-left: 12px">
+                            <form action="createBoard" class="cardContent">
+                                <input type="text" name="boardName" placeholder="Board name" id="bN">
+                                <input type="text" name="boardDesc" placeholder="Board Description" id="bD">
+                                <input type="text" name="boardLink" placeholder="Board link" id="bL">
+                                <select name="boardCategory" id="bC">
+                                    <option value="">Category</option>
+                                    <option value="1">Category1</option>
+                                    <option value="2">Category2</option>
+                                </select>
+                                <input type="file" name="boardSplash" id="bSplash">
+                                <div class="togglers">
+                                    <span class="optionToggler">
+                                        Use CAPTCHA
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </span>
+                                </div>
+                                <button type="submit">Create!</button>
+                            </form>
+
                         </div>
                     </div>
                 </div>

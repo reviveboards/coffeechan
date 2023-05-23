@@ -40,6 +40,10 @@ body {
     background-color: $purple;
 }
 
+.hidden {
+    display: none;
+}
+
 /*UI elements*/
 
 .switch {
@@ -100,6 +104,23 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+.optionToggler {
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    gap: 1.2rem;
+}
+
+button {
+    background-color: $main;
+    color: $white;
+    border: 2px solid $subcolor;
+    border-radius: $radius/4;
+    -webkit-box-shadow: $down-shadow;
+    -moz-box-shadow: $down-shadow;
+    box-shadow: $down-shadow;
 }
 
 /**/
@@ -419,6 +440,11 @@ textarea {
     gap: 0.8rem;
 }
 
+.boardManager {
+    display: flex;
+    flex-direction: row;
+}
+
 .boardMgrBoard {
     flex-direction: row;
     justify-content: space-between;
@@ -436,10 +462,6 @@ textarea {
     display: flex;
     flex-direction: row;
     gap: 0.6rem;
-}
-
-#boardMgrCreateNew {
-    color: $blue;
 }
 
 .boardMgrDeleteButton:hover {
