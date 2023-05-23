@@ -1,4 +1,4 @@
-# coffeechan
+![Coffeechan](/Splash.png)
 
 ## How to setup IDEA:
 * clone git repo
