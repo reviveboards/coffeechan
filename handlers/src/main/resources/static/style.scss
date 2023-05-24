@@ -440,6 +440,14 @@ textarea {
     gap: 0.8rem;
 }
 
+.adminListItem{
+    cursor: pointer;
+}
+
+.adminListItem:hover {
+    color: $blue;
+}
+
 .boardManager {
     display: flex;
     flex-direction: row;

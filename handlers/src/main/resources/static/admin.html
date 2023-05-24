@@ -42,15 +42,15 @@
                             </span>
                     <div class="cardContent">
                         <div class="adminList">
-                            <span class="adminListItem">
+                            <span class="adminListItem" id="bAdminListItem">
                                 <i class="at-three-line-bold"></i>
                                 <a>Boards</a>
                             </span>
-                            <span class="adminListItem">
+                            <span class="adminListItem" id="uAdminListItem">
                                 <i class="at-account-bold"></i>
                                 <a>Users</a>
                             </span>
-                            <span class="adminListItem">
+                            <span class="adminListItem" id="mAdminListItem">
                                 <i class="at-hammer-tool-bold"></i>
                                 <a>Moderation</a>
                             </span>
@@ -63,8 +63,11 @@
                 <div class="card">
                     <span class="cardHeader">
                         <span class="red cardBullet"></span>
-                        <p class="cardName">Actions</p>
+                        <p class="cardName" id="adminPanelHeader">Actions</p>
                     </span>
+                    <div class="cardContent statistics">
+                        Some statistics
+                    </div>
                     <div class="cardContent boardManager">
                         <div class="boardMgrList">
                             <div class="card boardMgrCategory">
@@ -146,6 +149,12 @@
                             </form>
 
                         </div>
+                    </div>
+                    <div class="cardContent userManager">
+                        Manage users
+                    </div>
+                    <div class="cardContent banManager">
+                        Manage bans
                     </div>
                 </div>
             </div>
