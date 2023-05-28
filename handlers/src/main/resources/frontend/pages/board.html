@@ -10,6 +10,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
         <title class="coffeechan#title"></title>
     </head>
     <body>
@@ -21,7 +22,7 @@
             </div>
         </div>
         <div class="pageContent">
-            <div class="boardSplash">
+            <div class="boardSplash" style="margin-bottom: 1.5rem">
                 <p class="boardName coffeechan#BoardName">/b/—Random</p>
             </div>
 
@@ -39,13 +40,20 @@
 
                                 <div class="functional">
                                     <input type="password" name="tripcode" id="trip" placeholder="Tripcode (unnecessary)">
-                                    <input type="button" value="Check">
+                                    <button type="submit">Check</button>
+                                    <span class="optionToggler">
+                                        Sage
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </span>
                                 </div>
                             </div>
                             <div class="posting">
                                 <input type="file" name="postAttach" id="pA"> <!--TODO: Drag&drop file upload-->
                                 <progress value="10" max="100" class="postingProgress">10%</progress>
-                                <input type="button" value="Post">
+                                <button type="submit">Post</button>
                             </div>
                         </form>
                     </div>
