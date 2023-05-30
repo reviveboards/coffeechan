@@ -39,6 +39,118 @@ body {
 .purple {
     background-color: $purple;
 }
+
+.hidden {
+    display: none;
+}
+
+/*UI elements*/
+
+input, textarea {
+    font-family: 'Fira Code', monospace;
+    background-color: $main;
+    border: 2px solid $subcolor;
+    color: $white;
+    border-radius: $radius/4;
+    padding: $p/2;
+}
+
+#pH {
+    font-weight: 600;
+}
+
+#trip {
+    padding: 1px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 35px;
+    height: 19px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $main;
+    border: 2px solid $subcolor;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 11px;
+    width: 11px;
+    left: 2px;
+    bottom: 2px;
+    background-color: $red;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider:before {
+    background-color: $green;
+}
+
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.togglers {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-top: $card-margin;
+    margin-bottom: $card-margin;
+}
+
+.optionToggler {
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1.2rem;
+}
+
+button {
+    background-color: $main;
+    color: $white;
+    border: 2px solid $subcolor;
+    border-radius: $radius/4;
+    -webkit-box-shadow: $down-shadow;
+    -moz-box-shadow: $down-shadow;
+    box-shadow: $down-shadow;
+}
+
+/**/
+
 /* Main page */
 
 
@@ -256,16 +368,21 @@ a:visited {
 .typing {
     display: flex;
     flex-direction: column;
+    gap: 5px;
+    flex-grow: 1;
 }
 
 .posting {
     display: flex;
     flex-direction: column;
+    gap: 5px;
+    margin-left: 9px;
 }
 
 .functional {
     display: flex;
     flex-direction: row;
+    gap: 5px;
 }
 
 /* Posts */
@@ -276,6 +393,15 @@ a:visited {
     //gap: $p;
 }
 
+.coffeechan\#posts {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 9px;
+}
+
 .postCard {
     min-height: 15vh;
 
@@ -284,7 +410,7 @@ a:visited {
     flex-direction: column;
     background-color: $main;
     border: 2px solid $dark;
-    border-radius: $radius;
+    border-radius: $radius/2;
     margin: 0;
 
     -webkit-box-shadow: $down-shadow;
@@ -306,7 +432,7 @@ a:visited {
     object-fit: cover;
     width: 20vh;
     height: 20vh;
-    border-radius: 5px;
+    border-radius: $radius/4;
     background-color: $less_darker;
 }
 
@@ -329,18 +455,68 @@ a:visited {
 .postReplies {
     font-weight: 300;
     flex: 0 1 auto;
+    color: $blue;
 }
 
-.postReply {
+.postReplyID {
     display: inline-block;
     padding-right: 4px;
 }
 
 textarea {
     resize: none;
-    padding: $p/2;
-    border-radius: $radius/2;
+    height: 10rem;
 }
+
+/*Admin panel*/
+
+.adminList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.adminListItem{
+    cursor: pointer;
+}
+
+.adminListItem:hover {
+    color: $blue;
+}
+
+.boardManager {
+    display: flex;
+    flex-direction: row;
+}
+
+.boardMgrBoard {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $p/2;
+    margin: $card-margin/2;
+    gap: 2rem;
+}
+
+.boardMgrBoard a:hover {
+    color: $blue;
+    cursor: pointer;
+}
+
+.boardMgrEditButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 0.6rem;
+}
+
+.boardMgrDeleteButton:hover {
+    color: $red;
+}
+
+.boardMgrEditButton:hover {
+    color: $yellow;
+}
+
+/**/
 
 footer {
     background-color: $less_darker;
