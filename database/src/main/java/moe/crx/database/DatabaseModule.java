@@ -2,6 +2,7 @@ package moe.crx.database;
 
 import com.google.inject.AbstractModule;
 import moe.crx.dao.BoardDao;
+import moe.crx.dao.CategoryDao;
 import moe.crx.dao.PostDao;
 
 public final class DatabaseModule extends AbstractModule {
@@ -10,6 +11,7 @@ public final class DatabaseModule extends AbstractModule {
     protected void configure() {
         bind(BoardDao.class);
         bind(PostDao.class);
+        bind(CategoryDao.class);
         bind(FlywayFactory.class);
     }
 }

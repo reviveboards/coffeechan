@@ -12,8 +12,6 @@ import moe.crx.dao.BoardDao;
 import moe.crx.frontend.html.pages.BoardsPage;
 import org.jetbrains.annotations.NotNull;
 
-import static moe.crx.handlers.Responser.ok;
-
 @Path("/boards")
 @Singleton
 public final class BoardsFrontend implements Feature {
@@ -35,9 +33,9 @@ public final class BoardsFrontend implements Feature {
 
     @GET
     @Produces(MediaType.TEXT_HTML)
-    public Response boards() {
+    public String boards() {
         var boardsPage = new BoardsPage().consumeBoards(boardDao.all()).consumeConfig(config);
 
-        return ok(boardsPage.html());
+        return boardsPage.html();
     }
 }

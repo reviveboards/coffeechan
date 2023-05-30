@@ -14,7 +14,7 @@ public final class BoardListEntry extends AbstractComponent<BoardListEntry> {
         getElement().getElementsByClass("coffeechan#boardLink").forEach(element ->
                 element.attr("href", "/" + board.getTag()));
         getElement().getElementsByClass("coffeechan#boardTagSlashed").forEach(element ->
-                element.append("/" + board.getTag() + "/"));
+                element.append(board.getTagSlashed()));
         getElement().getElementsByClass("coffeechan#boardTag").forEach(element ->
                 element.append(board.getTag()));
         getElement().getElementsByClass("coffeechan#boardName").forEach(element ->

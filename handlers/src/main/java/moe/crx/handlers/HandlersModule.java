@@ -4,8 +4,9 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.multibindings.Multibinder;
 import jakarta.ws.rs.core.Feature;
-import moe.crx.api.BoardsREST;
-import moe.crx.api.PostsREST;
+import moe.crx.api.BoardsApi;
+import moe.crx.api.CategoriesApi;
+import moe.crx.api.PostsApi;
 import moe.crx.frontend.AdminPanelFrontend;
 import moe.crx.frontend.BoardFrontend;
 import moe.crx.frontend.BoardsFrontend;
@@ -21,8 +22,9 @@ public final class HandlersModule extends AbstractModule {
 
         Multibinder<Feature> irestMultibinder = Multibinder.newSetBinder(binder(), Feature.class);
         irestMultibinder.addBinding().to(JacksonFeature.class);
-        irestMultibinder.addBinding().to(BoardsREST.class);
-        irestMultibinder.addBinding().to(PostsREST.class);
+        irestMultibinder.addBinding().to(BoardsApi.class);
+        irestMultibinder.addBinding().to(PostsApi.class);
+        irestMultibinder.addBinding().to(CategoriesApi.class);
         irestMultibinder.addBinding().to(BoardsFrontend.class);
         irestMultibinder.addBinding().to(BoardFrontend.class);
         irestMultibinder.addBinding().to(AdminPanelFrontend.class);

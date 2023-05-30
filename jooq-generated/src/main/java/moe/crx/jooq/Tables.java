@@ -5,6 +5,7 @@ package moe.crx.jooq;
 
 
 import moe.crx.jooq.tables.Boards;
+import moe.crx.jooq.tables.Categories;
 import moe.crx.jooq.tables.Images;
 import moe.crx.jooq.tables.Posts;
 import moe.crx.jooq.tables.Users;
@@ -20,6 +21,11 @@ public class Tables {
      * The table <code>public.boards</code>.
      */
     public static final Boards BOARDS = Boards.BOARDS;
+
+    /**
+     * The table <code>public.categories</code>.
+     */
+    public static final Categories CATEGORIES = Categories.CATEGORIES;
 
     /**
      * The table <code>public.images</code>.

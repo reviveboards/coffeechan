@@ -6,26 +6,32 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Feature;
 import jakarta.ws.rs.core.FeatureContext;
 import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
-import moe.crx.api.BoardsREST;
+import moe.crx.api.BoardsApi;
 import moe.crx.core.Configuration;
 import moe.crx.core.ConfigurationFactory;
+import moe.crx.dao.BoardDao;
+import moe.crx.dao.CategoryDao;
 import moe.crx.frontend.html.pages.AdminPanelPage;
 import org.jetbrains.annotations.NotNull;
-
-import static moe.crx.handlers.Responser.ok;
 
 @Path("/admin")
 @Singleton
 public final class AdminPanelFrontend implements Feature {
 
     private final Configuration config;
-    private final BoardsREST boardsREST;
+    private final CategoryDao categoryDao;
+    private final BoardDao boardDao;
+    private final BoardsApi boardsApi;
 
     @Inject
-    public AdminPanelFrontend(@NotNull ConfigurationFactory configurationFactory, @NotNull BoardsREST boardsREST) {
+    public AdminPanelFrontend(@NotNull ConfigurationFactory configurationFactory,
+                              @NotNull BoardDao boardDao,
+                              @NotNull CategoryDao categoryDao,
+                              @NotNull BoardsApi boardsApi) {
         this.config = configurationFactory.getInstance();
-        this.boardsREST = boardsREST;
+        this.categoryDao = categoryDao;
+        this.boardDao = boardDao;
+        this.boardsApi = boardsApi;
     }
 
     @Override
@@ -35,18 +41,26 @@ public final class AdminPanelFrontend implements Feature {
 
     @GET
     @Produces(MediaType.TEXT_HTML)
-    public Response adminPanel() {
-        var boardPage = new AdminPanelPage().consumeConfig(config);
+    public String adminPanel() {
+        var boardPage = new AdminPanelPage()
+                .consumeConfig(config)
+                .consumeCategories(categoryDao, boardDao);
 
-        return ok(boardPage.html());
+        return boardPage.html();
     }
 
     @GET
-    @Path("/createboard")
+    @Path("/createBoard")
     @Produces(MediaType.TEXT_HTML)
-    public Response createBoard(@QueryParam("name") String name, @QueryParam("tag") String tag) {
-        try (var resp = boardsREST.create(name, tag)) {
-            return ok(new AdminPanelPage().consumeConfig(config).html());
-        }
+    public String createBoard(@QueryParam("name") String name,
+                              @QueryParam("tag") String tag) {
+        return adminPanel();
+    }
+
+    @GET
+    @Path("/createCategory")
+    @Produces(MediaType.TEXT_HTML)
+    public String createCategory(@QueryParam("name") String name) {
+        return adminPanel();
     }
 }

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="/static/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@vectopus/atlas-icons/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title class="coffechan#title"></title>
+
+    <script src="/static/js/jquery-3.6.4.min.js"></script>
+    <script src="/static/js/adminFE.js"></script>
+</head>
+<body>
+<div class="boardList">
+    <div class="listContent">
+        <div class="stripBoard">/b/</div>
+        <div class="stripBoard">/soc/</div>
+        <div class="stripBoard">/pol/</div>
+    </div>
+    <div class="maintenanceList">
+        <a class="settingButton" href="#">[theme]</a>
+    </div>
+</div>
+<div class="pageContent">
+    <header class="mainPageHeading">
+        <div class="naming">
+            <div class="boardTitle">/~ Admin</div>
+            <div class="boardSlogan coffeechan#motd"></div>
+        </div>
+    </header>
+    <main class="panels">
+        <div class="leftContent">
+            <div class="card">
+                            <span class="cardHeader">
+                                <span class="blue cardBullet"></span>
+                                <p class="cardName">Admin menu</p>
+                            </span>
+                <div class="cardContent">
+                    <div class="adminList">
+                            <span class="adminListItem" id="bAdminListItem">
+                                <i class="at-three-line-bold"></i>
+                                <a>Boards</a>
+                            </span>
+                        <span class="adminListItem" id="uAdminListItem">
+                                <i class="at-account-bold"></i>
+                                <a>Users</a>
+                            </span>
+                        <span class="adminListItem" id="mAdminListItem">
+                                <i class="at-hammer-tool-bold"></i>
+                                <a>Moderation</a>
+                            </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="rightContent">
+            <div class="card">
+                    <span class="cardHeader">
+                        <span class="red cardBullet"></span>
+                        <p class="cardName" id="adminPanelHeader">Actions</p>
+                    </span>
+                <div class="cardContent statistics">
+                    Some statistics
+                </div>
+                <div class="cardContent boardManager">
+                    <div class="coffeechan#categories">
+                        <button id="boardMgrCreateNewCategory">+ Create new category</button>
+                        <button id="boardMgrCreateNewBoard">+ Create new board</button>
+                    </div>
+
+                    <div class="card" id="boardMgrCreateCategoryForm" style="margin-left: 12px">
+                        <form action="createCategory" class="cardContent">
+                            <div>
+                                <input type="text" name="categoryName" placeholder="Category name" id="cN">
+                            </div>
+                            <button type="submit">Create category</button>
+                        </form>
+                    </div>
+
+                    <div class="card" id="boardMgrCreateBoardForm" style="margin-left: 12px">
+                        <form action="createBoard" class="cardContent">
+                            <div>
+                                <input type="text" name="boardName" placeholder="Board name" id="bN">
+                            </div>
+                            <div>
+                                <input type="text" name="boardDesc" placeholder="Board description" id="bD">
+                            </div>
+                            <div>
+                                <input type="text" name="boardLink" placeholder="Board link" id="bL">
+                            </div>
+                            <div>
+                                <label for="bC">Board category: </label><select class="coffeechan#categoriesCombobox" name="boardCategory" id="bC"></select>
+                            </div>
+                            <div>
+                                <label for="bSplash">Board splash: </label><input type="file" name="boardSplash" id="bSplash">
+                            </div>
+                            <div class="togglers">
+                                    <span class="optionToggler">
+                                        Use CAPTCHA
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </span>
+                                <span class="optionToggler">
+                                        Use country flags
+                                        <label class="switch">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </span>
+                            </div>
+                            <button type="submit">Create board</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="cardContent userManager">
+                    Manage users
+                </div>
+                <div class="cardContent banManager">
+                    Manage bans
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<footer>
+    <p>2023, reviveboards x nnproject</p>
+</footer>
+</body>
+</html>

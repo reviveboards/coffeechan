@@ -2,6 +2,7 @@ package moe.crx.dao;
 
 import moe.crx.core.ConfigurationFactory;
 import moe.crx.database.HikariConnectable;
+import moe.crx.dto.Board;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jooq.*;
@@ -31,12 +32,20 @@ public abstract class AbstractDao<Type, RecordType extends UpdatableRecord<?>, K
         this.exclusiveFields = exclusiveFields;
     }
 
-    public @Nullable Type read(KeyType id) {
+    public @Nullable Type read(@NotNull KeyType id) {
         try (var c = getConnection()) {
             return c.context()
                     .fetchOptional(table, keyField.eq(id))
                     .map(r -> r.into(clazz))
                     .orElse(null);
+        }
+    }
+
+    public @NotNull List<@NotNull Type> readAll(@NotNull List<@NotNull KeyType> boards) {
+        try (var c = getConnection()) {
+            return c.context()
+                    .fetch(table, keyField.in(boards))
+                    .map(r -> r.into(clazz));
         }
     }
 

@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import moe.crx.jooq.tables.Boards;
+import moe.crx.jooq.tables.Categories;
 import moe.crx.jooq.tables.Images;
 import moe.crx.jooq.tables.Posts;
 import moe.crx.jooq.tables.Users;
@@ -34,6 +35,11 @@ public class Public extends SchemaImpl {
      * The table <code>public.boards</code>.
      */
     public final Boards BOARDS = Boards.BOARDS;
+
+    /**
+     * The table <code>public.categories</code>.
+     */
+    public final Categories CATEGORIES = Categories.CATEGORIES;
 
     /**
      * The table <code>public.images</code>.
@@ -67,6 +73,7 @@ public class Public extends SchemaImpl {
     public final List<Table<?>> getTables() {
         return Arrays.asList(
             Boards.BOARDS,
+            Categories.CATEGORIES,
             Images.IMAGES,
             Posts.POSTS,
             Users.USERS

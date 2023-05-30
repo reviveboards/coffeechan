@@ -1,5 +1,6 @@
 package moe.crx.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,4 +17,10 @@ public final class Board {
     private boolean locked;
     private boolean nsfw;
     private long headerImage;
+    private long parentCategory;
+
+    @JsonIgnore
+    public String getTagSlashed() {
+        return "/" + tag + "/";
+    }
 }

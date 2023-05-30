@@ -12,8 +12,6 @@ import moe.crx.frontend.html.pages.BoardPage;
 import moe.crx.core.Configuration;
 import org.jetbrains.annotations.NotNull;
 
-import static moe.crx.handlers.Responser.ok;
-
 @Path("/{boardTag}")
 @Singleton
 public final class BoardFrontend implements Feature {
@@ -32,18 +30,18 @@ public final class BoardFrontend implements Feature {
 
     @GET
     @Produces(MediaType.TEXT_HTML)
-    public Response board(@PathParam("boardTag") String boardTag) {
+    public String board(@PathParam("boardTag") String boardTag) {
         var boardPage = new BoardPage().consumeConfig(config);
 
-        return ok(boardPage.html());
+        return boardPage.html();
     }
 
     @GET
     @Path("/{threadId}")
     @Produces(MediaType.TEXT_HTML)
-    public Response thread(@PathParam("threadId") long threadId) {
+    public String thread(@PathParam("threadId") long threadId) {
         var boardPage = new BoardPage().consumeConfig(config);
 
-        return ok(boardPage.html());
+        return boardPage.html();
     }
 }

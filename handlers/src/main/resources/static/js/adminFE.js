@@ -28,8 +28,16 @@ $(document).ready(function(){
         $("#adminPanelHeader").text("Manage bans");
     });
 
-    $("#boardMgrCreateForm").hide();
-    $("#boardMgrCreateNew").click(function(){
-        $("#boardMgrCreateForm").show(250);
+    $("#boardMgrCreateBoardForm").hide();
+    $("#boardMgrCreateCategoryForm").hide();
+
+    $("#boardMgrCreateNewBoard").click(function(){
+        $("#boardMgrCreateCategoryForm").hide();
+        $("#boardMgrCreateBoardForm").show(250);
+    });
+
+    $("#boardMgrCreateNewCategory").click(function(){
+        $("#boardMgrCreateBoardForm").hide();
+        $("#boardMgrCreateCategoryForm").show(250);
     });
 });
