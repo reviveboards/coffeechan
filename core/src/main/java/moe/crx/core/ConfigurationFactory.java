@@ -9,7 +9,8 @@ public final class ConfigurationFactory {
 
     private static Configuration configuration = null;
 
-    public @NotNull Configuration getInstance(@NotNull String filePath) {
+    @NotNull
+    public Configuration getInstance(@NotNull String filePath) {
         if (configuration == null) {
             var file = new File(filePath);
 
@@ -21,12 +22,23 @@ public final class ConfigurationFactory {
             }
 
             configuration.setFile(file);
+            configuration.save();
         }
 
         return configuration;
     }
 
-    public @NotNull Configuration getInstance() {
+    @NotNull
+    public Configuration getInstance(@NotNull String[] args) {
+        if (args.length == 0) {
+            return getInstance();
+        }
+
+        return getInstance(args[0]);
+    }
+
+    @NotNull
+    public Configuration getInstance() {
         return getInstance("config.json");
     }
 }

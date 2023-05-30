@@ -1,8 +1,8 @@
 package moe.crx.database;
 
-import com.google.inject.Inject;
 import lombok.Getter;
 import lombok.experimental.Accessors;
+import moe.crx.core.Configuration;
 import org.jetbrains.annotations.NotNull;
 import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
@@ -19,10 +19,16 @@ public final class WrappedConnection implements Closeable {
     @Getter
     private final DSLContext context;
 
-    @Inject
-    public WrappedConnection(@NotNull Connection connection) {
+    public WrappedConnection(@NotNull Configuration config,
+                             @NotNull Connection connection) {
         this.connection = connection;
-        this.context = DSL.using(connection, SQLDialect.POSTGRES);
+
+        var databaseType = config.getDatabase().getType();
+        if (databaseType == null || "postgresql".equalsIgnoreCase(databaseType)) {
+            databaseType = "postgres";
+        }
+
+        this.context = DSL.using(connection, SQLDialect.valueOf(databaseType.toUpperCase()));
     }
 
     @Override

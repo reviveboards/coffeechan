@@ -1,6 +1,5 @@
-rootProject.name = "vhm"
+rootProject.name = "coffeechan"
 include("jooq-generated")
 include("database")
-include("security")
 include("core")
 include("handlers")
