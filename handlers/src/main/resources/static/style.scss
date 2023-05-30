@@ -57,10 +57,11 @@ input, textarea {
 
 #pH {
     font-weight: 600;
+    padding: $p/4;
 }
 
 #trip {
-    padding: 1px;
+    padding: $p/4;
 }
 
 .switch {
@@ -383,6 +384,7 @@ a:visited {
     display: flex;
     flex-direction: row;
     gap: 5px;
+    align-items: center;
 }
 
 /* Posts */
