@@ -1,8 +1,8 @@
 package moe.crx.core;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.inject.Inject;
 import lombok.Data;
 import org.jetbrains.annotations.NotNull;
 
@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public final class Configuration {
 
     @JsonIgnore
@@ -18,18 +19,22 @@ public final class Configuration {
     @JsonIgnore
     private File file;
 
-    private String[] motd;
-    private String title;
+    private String[] motd = { "This is a default MOTD." };
+    private String title = "coffeechan";
+    private int webserverPort = 80;
+    private DatabaseConfigurationEntry database = new DatabaseConfigurationEntry();
 
     public void save() {
         try {
-            mapper.writeValue(file, this);
+            mapper.writerWithDefaultPrettyPrinter().writeValue(file, this);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public @NotNull String getRandomMotd() {
+    @NotNull
+    @JsonIgnore
+    public String getRandomMotd() {
         if (motd == null || motd.length == 0) {
             return "";
         }
@@ -37,9 +42,5 @@ public final class Configuration {
         var message = motd[ThreadLocalRandom.current().nextInt(motd.length)];
 
         return message != null ? message : "";
-    }
-
-    public @NotNull String getTitle() {
-        return title != null ? title : "";
     }
 }

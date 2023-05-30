@@ -1,7 +1,7 @@
 package moe.crx.dao;
 
 import com.google.inject.Inject;
-import com.zaxxer.hikari.HikariDataSource;
+import moe.crx.core.Configuration;
 import moe.crx.database.HikariConnectable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -19,13 +19,13 @@ public abstract class AbstractDao<Type, RecordType extends UpdatableRecord<?>, K
 
     @SafeVarargs
     @Inject
-    public AbstractDao(@NotNull Class<Type> pojoClazz,
-                       @NotNull HikariDataSource dataSource,
+    public AbstractDao(@NotNull Configuration config,
+                       @NotNull Class<Type> pojoClazz,
                        @NotNull Table<RecordType> table,
                        @NotNull TableField<RecordType, KeyType> keyField,
                        boolean isKeySerial,
                        @NotNull TableField<RecordType, ?>... exclusiveFields) {
-        super(dataSource);
+        super(config);
         this.clazz = pojoClazz;
         this.table = table;
         this.keyField = keyField;
