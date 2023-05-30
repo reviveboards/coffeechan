@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import moe.crx.core.Configuration;
+import moe.crx.core.ConfigurationFactory;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.SQLException;
@@ -15,17 +16,16 @@ public abstract class HikariConnectable {
     @NotNull
     private final Configuration configuration;
 
-    @Inject
-    public HikariConnectable(@NotNull Configuration config) {
+    public HikariConnectable(@NotNull ConfigurationFactory configurationFactory) {
+        this.configuration = configurationFactory.getInstance();
         var hikariConfig = new HikariConfig();
         hikariConfig.setJdbcUrl(String.format("jdbc:%s://%s/%s",
-                config.getDatabase().getType(),
-                config.getDatabase().getHostname(),
-                config.getDatabase().getDatabase()));
-        hikariConfig.setUsername(config.getDatabase().getUsername());
-        hikariConfig.setPassword(config.getDatabase().getPassword());
+                configuration.getDatabase().getType(),
+                configuration.getDatabase().getHostname(),
+                configuration.getDatabase().getDatabase()));
+        hikariConfig.setUsername(configuration.getDatabase().getUsername());
+        hikariConfig.setPassword(configuration.getDatabase().getPassword());
         this.dataSource = new HikariDataSource(hikariConfig);
-        this.configuration = config;
     }
 
     @NotNull

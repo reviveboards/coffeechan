@@ -9,8 +9,8 @@ public final class ServerFactory {
     private int port;
 
     @Inject
-    public ServerFactory(@NotNull Configuration config) {
-        this.port = config.getWebserverPort();
+    public ServerFactory(@NotNull ConfigurationFactory configurationFactory) {
+        this.port = configurationFactory.getInstance().getWebserverPort();
     }
 
     public Server getServer() {
