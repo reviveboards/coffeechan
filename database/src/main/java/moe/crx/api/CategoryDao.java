@@ -1,4 +1,4 @@
-package moe.crx.dao;
+package moe.crx.api;
 
 import com.google.inject.Inject;
 import moe.crx.core.ConfigurationFactory;
@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 import static moe.crx.jooq.Tables.CATEGORIES;
 
-public final class CategoryDao extends AbstractDao<Category, CategoriesRecord, Long> {
+final class CategoryDao extends AbstractDao<Category, CategoriesRecord, Long> {
 
     @Inject
     public CategoryDao(@NotNull ConfigurationFactory configurationFactory) {

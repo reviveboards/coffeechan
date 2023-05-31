@@ -11,8 +11,6 @@ import java.util.Calendar;
 
 public abstract class AbstractPage<T extends AbstractPage<T>> extends AbstractComponent<T> {
 
-    //TODO: make DAOs avaliable only for APIs
-
     private final long creationTimestamp = System.currentTimeMillis();
 
     public AbstractPage(@NotNull String url, @NotNull Configuration config) {

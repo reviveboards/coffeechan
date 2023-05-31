@@ -10,8 +10,6 @@ import moe.crx.api.BoardsApi;
 import moe.crx.api.CategoriesApi;
 import moe.crx.core.Configuration;
 import moe.crx.core.ConfigurationFactory;
-import moe.crx.dao.BoardDao;
-import moe.crx.dao.CategoryDao;
 import moe.crx.html.pages.AdminPanelPage;
 import org.jetbrains.annotations.NotNull;
 
@@ -20,20 +18,14 @@ import org.jetbrains.annotations.NotNull;
 public final class AdminPanelFrontend implements Feature {
 
     private final Configuration config;
-    private final CategoryDao categoryDao;
-    private final BoardDao boardDao;
     private final BoardsApi boardsApi;
     private final CategoriesApi categoriesApi;
 
     @Inject
     public AdminPanelFrontend(@NotNull ConfigurationFactory configurationFactory,
-                              @NotNull BoardDao boardDao,
-                              @NotNull CategoryDao categoryDao,
                               @NotNull BoardsApi boardsApi,
                               @NotNull CategoriesApi categoriesApi) {
         this.config = configurationFactory.getInstance();
-        this.categoryDao = categoryDao;
-        this.boardDao = boardDao;
         this.boardsApi = boardsApi;
         this.categoriesApi = categoriesApi;
     }
@@ -47,7 +39,7 @@ public final class AdminPanelFrontend implements Feature {
     @Produces(MediaType.TEXT_HTML)
     public String adminPanel() {
         return new AdminPanelPage(config)
-                .consumeCategories(categoryDao, boardDao)
+                .consumeCategories(categoriesApi, boardsApi)
                 .html();
     }
 
@@ -61,7 +53,7 @@ public final class AdminPanelFrontend implements Feature {
         var response = boardsApi.create(name, tag, parentCategory, description);
 
         return new AdminPanelPage(config)
-                .consumeCategories(categoryDao, boardDao)
+                .consumeCategories(categoriesApi, boardsApi)
                 .consumeResponse(response)
                 .html();
     }
@@ -73,7 +65,7 @@ public final class AdminPanelFrontend implements Feature {
         var response = categoriesApi.create(name);
 
         return new AdminPanelPage(config)
-                .consumeCategories(categoryDao, boardDao)
+                .consumeCategories(categoriesApi, boardsApi)
                 .consumeResponse(response)
                 .html();
     }

@@ -6,8 +6,8 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Feature;
 import jakarta.ws.rs.core.FeatureContext;
 import jakarta.ws.rs.core.MediaType;
+import moe.crx.api.BoardsApi;
 import moe.crx.core.ConfigurationFactory;
-import moe.crx.dao.BoardDao;
 import moe.crx.dto.APIError;
 import moe.crx.html.pages.BoardPage;
 import moe.crx.core.Configuration;
@@ -19,13 +19,13 @@ import org.jetbrains.annotations.NotNull;
 public final class BoardFrontend implements Feature {
 
     private final Configuration config;
-    private final BoardDao boardDao;
+    private final BoardsApi boardsApi;
 
     @Inject
     public BoardFrontend(@NotNull ConfigurationFactory configurationFactory,
-                         @NotNull BoardDao boardDao) {
+                         @NotNull BoardsApi boardsApi) {
         this.config = configurationFactory.getInstance();
-        this.boardDao = boardDao;
+        this.boardsApi = boardsApi;
     }
 
     @Override
@@ -36,11 +36,11 @@ public final class BoardFrontend implements Feature {
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String board(@PathParam("boardTag") String boardTag) {
-        var board = boardDao.readByTag(boardTag);
+        var board = boardsApi.getBoardByTag(boardTag);
 
-        if (board == null) {
+        if (board instanceof APIError error) {
             return new MessagePage(config)
-                    .consumeResponse(new APIError(0, "Specified board doesn't exist."))
+                    .consumeResponse(error)
                     .html();
         }
 

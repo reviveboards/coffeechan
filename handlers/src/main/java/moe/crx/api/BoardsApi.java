@@ -6,8 +6,6 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Feature;
 import jakarta.ws.rs.core.FeatureContext;
 import jakarta.ws.rs.core.MediaType;
-import moe.crx.dao.BoardDao;
-import moe.crx.dao.CategoryDao;
 import moe.crx.dto.APIError;
 import moe.crx.dto.Board;
 import org.jetbrains.annotations.NotNull;
@@ -84,5 +82,25 @@ public final class BoardsApi implements Feature {
     @Override
     public boolean configure(FeatureContext context) {
         return true;
+    }
+
+    @Path("/getBoards")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Board> getBoards(@QueryParam("boards") List<Long> boards) {
+        return boardDao.readAll(boards);
+    }
+
+    @Path("/getBoardByTag")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Object getBoardByTag(@QueryParam("tag") String boardTag) {
+        var board = boardDao.readByTag(boardTag);
+
+        if (board == null) {
+            return new APIError(0, "Board with specified tag doesn't exist.");
+        }
+
+        return board;
     }
 }

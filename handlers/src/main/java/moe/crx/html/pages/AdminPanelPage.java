@@ -1,8 +1,8 @@
 package moe.crx.html.pages;
 
+import moe.crx.api.BoardsApi;
+import moe.crx.api.CategoriesApi;
 import moe.crx.core.Configuration;
-import moe.crx.dao.BoardDao;
-import moe.crx.dao.CategoryDao;
 import moe.crx.dto.Board;
 import moe.crx.dto.Category;
 import moe.crx.html.components.BoardManagerCategory;
@@ -16,11 +16,11 @@ public final class AdminPanelPage extends AbstractPage<AdminPanelPage> {
         super("/frontend/pages/admin.html", config);
     }
 
-    public AdminPanelPage consumeCategories(CategoryDao categoryDao, BoardDao boardDao) {
-        var categories = categoryDao.all();
+    public AdminPanelPage consumeCategories(CategoriesApi categoriesApi, BoardsApi boardsApi) {
+        var categories = categoriesApi.getAll();
 
         var categoriesElements = categories.stream().map(category ->
-                new BoardManagerCategory().consume(category, boardDao.readAll(category.getBoards())));
+                new BoardManagerCategory().consume(category, boardsApi.getBoards(category.getBoards())));
 
         var categoriesCombobox = categories.stream().map(category -> "<option value=\"%d\">%s</option>".formatted(category.getId(), category.getName()));
 
