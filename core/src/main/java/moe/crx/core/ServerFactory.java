@@ -19,6 +19,7 @@ public final class ServerFactory {
         connector.setHost("localhost");
         connector.setPort(port);
         server.setConnectors(new Connector[] { connector });
+        server.setRequestLog(new CustomRequestLog());
         return server;
     }
 }
