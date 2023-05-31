@@ -2,7 +2,12 @@ package moe.crx.frontend.html.pages;
 
 import moe.crx.dao.BoardDao;
 import moe.crx.dao.CategoryDao;
+import moe.crx.dto.Board;
+import moe.crx.dto.Category;
 import moe.crx.frontend.html.components.BoardManagerCategory;
+import moe.crx.frontend.html.components.ResponseMessage;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class AdminPanelPage extends AbstractPage<AdminPanelPage> {
 
@@ -25,5 +30,20 @@ public class AdminPanelPage extends AbstractPage<AdminPanelPage> {
                 categoriesElements.forEach(categoriesElement -> element.append(categoriesElement.html())));
 
         return this;
+    }
+
+    @Override
+    public @NotNull AdminPanelPage consumeResponse(@Nullable Object response) {
+        if (response instanceof Board) {
+            return consumeResponse(new ResponseMessage(ResponseMessage.ResponseType.MESSAGE,
+                    "Board has been successfully created."));
+        }
+
+        if (response instanceof Category) {
+            return consumeResponse(new ResponseMessage(ResponseMessage.ResponseType.MESSAGE,
+                    "Category has been successfully created."));
+        }
+
+        return super.consumeResponse(response);
     }
 }

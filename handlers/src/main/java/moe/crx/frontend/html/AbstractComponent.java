@@ -43,4 +43,8 @@ public abstract class AbstractComponent<T extends AbstractComponent<T>> {
     public @NotNull String html() {
         return element.html();
     }
+
+    public @NotNull String toString() {
+        return html();
+    }
 }

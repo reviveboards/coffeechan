@@ -1,8 +1,11 @@
 package moe.crx.frontend.html.pages;
 
 import moe.crx.core.Configuration;
+import moe.crx.dto.APIError;
 import moe.crx.frontend.html.AbstractComponent;
+import moe.crx.frontend.html.components.ResponseMessage;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public abstract class AbstractPage<T extends AbstractPage<T>> extends AbstractComponent<T> {
 
@@ -19,6 +22,26 @@ public abstract class AbstractPage<T extends AbstractPage<T>> extends AbstractCo
     public @NotNull T consumeTitle(@NotNull String title) {
         getElement().getElementsByClass("coffeechan#title").forEach(element ->
                 element.append(title));
+        return cast();
+    }
+
+    public @NotNull T consumeResponse(@Nullable Object response) {
+        if (response == null) {
+            return consumeResponse(new ResponseMessage(ResponseMessage.ResponseType.ERROR));
+        }
+
+        if (response instanceof APIError error) {
+            return consumeResponse(new ResponseMessage(ResponseMessage.ResponseType.ERROR,
+                    error.getErrorCode() + ": " + error.getErrorMessage()));
+        }
+
+        return consumeResponse(new ResponseMessage(ResponseMessage.ResponseType.MESSAGE));
+    }
+
+    public @NotNull T consumeResponse(@NotNull ResponseMessage message) {
+        getElement().getElementsByClass("coffeechan#responseMessage").forEach(element ->
+                element.append(message.html()));
+
         return cast();
     }
 
