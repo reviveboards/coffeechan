@@ -365,6 +365,27 @@ a:visited {
     font-weight: 600;
 }
 
+.boardsList {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.boardsListCategory {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.boardsListCategory > p {
+    font-weight: 600;
+    margin: 0.1rem 0 0.1rem 0;
+}
+
+.boardsListCategory > a {
+    margin-left: 0.5rem;
+}
+
 /* Board list */
 
 .boardListEntry > a {
