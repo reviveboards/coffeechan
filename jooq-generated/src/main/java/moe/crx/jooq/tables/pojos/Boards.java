@@ -23,6 +23,7 @@ public class Boards implements Serializable {
     private final Boolean locked;
     private final Boolean nsfw;
     private final Long headerimage;
+    private final Long parentcategory;
 
     public Boards(Boards value) {
         this.id = value.id;
@@ -33,6 +34,7 @@ public class Boards implements Serializable {
         this.locked = value.locked;
         this.nsfw = value.nsfw;
         this.headerimage = value.headerimage;
+        this.parentcategory = value.parentcategory;
     }
 
     public Boards(
@@ -43,7 +45,8 @@ public class Boards implements Serializable {
         Boolean visible,
         Boolean locked,
         Boolean nsfw,
-        Long headerimage
+        Long headerimage,
+        Long parentcategory
     ) {
         this.id = id;
         this.tag = tag;
@@ -53,6 +56,7 @@ public class Boards implements Serializable {
         this.locked = locked;
         this.nsfw = nsfw;
         this.headerimage = headerimage;
+        this.parentcategory = parentcategory;
     }
 
     /**
@@ -109,6 +113,13 @@ public class Boards implements Serializable {
      */
     public Long getHeaderimage() {
         return this.headerimage;
+    }
+
+    /**
+     * Getter for <code>public.boards.parentCategory</code>.
+     */
+    public Long getParentcategory() {
+        return this.parentcategory;
     }
 
     @Override
@@ -168,6 +179,12 @@ public class Boards implements Serializable {
         }
         else if (!this.headerimage.equals(other.headerimage))
             return false;
+        if (this.parentcategory == null) {
+            if (other.parentcategory != null)
+                return false;
+        }
+        else if (!this.parentcategory.equals(other.parentcategory))
+            return false;
         return true;
     }
 
@@ -183,6 +200,7 @@ public class Boards implements Serializable {
         result = prime * result + ((this.locked == null) ? 0 : this.locked.hashCode());
         result = prime * result + ((this.nsfw == null) ? 0 : this.nsfw.hashCode());
         result = prime * result + ((this.headerimage == null) ? 0 : this.headerimage.hashCode());
+        result = prime * result + ((this.parentcategory == null) ? 0 : this.parentcategory.hashCode());
         return result;
     }
 
@@ -198,6 +216,7 @@ public class Boards implements Serializable {
         sb.append(", ").append(locked);
         sb.append(", ").append(nsfw);
         sb.append(", ").append(headerimage);
+        sb.append(", ").append(parentcategory);
 
         sb.append(")");
         return sb.toString();

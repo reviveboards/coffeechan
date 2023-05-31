@@ -6,23 +6,27 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.*;
+import moe.crx.api.BoardsApi;
+import moe.crx.api.CategoriesApi;
 import moe.crx.core.Configuration;
 import moe.crx.core.ConfigurationFactory;
-import moe.crx.dao.BoardDao;
-import moe.crx.frontend.html.pages.BoardsPage;
+import moe.crx.html.pages.BoardsPage;
 import org.jetbrains.annotations.NotNull;
 
 @Path("/")
 @Singleton
 public final class BoardsFrontend implements Feature {
 
-    private final BoardDao boardDao;
+    private final BoardsApi boardsApi;
+    private final CategoriesApi categoriesApi;
     private final Configuration config;
 
     @Inject
-    public BoardsFrontend(@NotNull BoardDao boardDao,
+    public BoardsFrontend(@NotNull BoardsApi boardsApi,
+                          @NotNull CategoriesApi categoriesApi,
                           @NotNull ConfigurationFactory configurationFactory) {
-        this.boardDao = boardDao;
+        this.boardsApi = boardsApi;
+        this.categoriesApi = categoriesApi;
         this.config = configurationFactory.getInstance();
     }
 
@@ -34,9 +38,9 @@ public final class BoardsFrontend implements Feature {
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String index() {
-        var boardsPage = new BoardsPage().consumeBoards(boardDao.all()).consumeConfig(config);
-
-        return boardsPage.html();
+        return new BoardsPage(config)
+                .consumeBoards(categoriesApi, boardsApi)
+                .html();
     }
 
 

@@ -4,7 +4,7 @@ import com.google.inject.Guice;
 import moe.crx.core.ConfigurationFactory;
 import moe.crx.core.CoreModule;
 import moe.crx.core.ServerFactory;
-import moe.crx.database.DatabaseModule;
+import moe.crx.api.DatabaseModule;
 import moe.crx.database.FlywayFactory;
 import moe.crx.handlers.HandlersFactory;
 import moe.crx.handlers.HandlersModule;

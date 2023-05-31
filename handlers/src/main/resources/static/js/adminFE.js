@@ -1,8 +1,7 @@
 $(document).ready(function(){
-    $(".boardManager").hide();
     $(".userManager").hide();
     $(".banManager").hide();
-
+    $(".boardManager").show();
 
     $("#bAdminListItem").click(function (){
         $(".statistics").hide();

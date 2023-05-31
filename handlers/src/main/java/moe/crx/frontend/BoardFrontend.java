@@ -6,10 +6,12 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Feature;
 import jakarta.ws.rs.core.FeatureContext;
 import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
+import moe.crx.api.BoardsApi;
 import moe.crx.core.ConfigurationFactory;
-import moe.crx.frontend.html.pages.BoardPage;
+import moe.crx.dto.APIError;
+import moe.crx.html.pages.BoardPage;
 import moe.crx.core.Configuration;
+import moe.crx.html.pages.MessagePage;
 import org.jetbrains.annotations.NotNull;
 
 @Path("/{boardTag}")
@@ -17,10 +19,13 @@ import org.jetbrains.annotations.NotNull;
 public final class BoardFrontend implements Feature {
 
     private final Configuration config;
+    private final BoardsApi boardsApi;
 
     @Inject
-    public BoardFrontend(@NotNull ConfigurationFactory configurationFactory) {
+    public BoardFrontend(@NotNull ConfigurationFactory configurationFactory,
+                         @NotNull BoardsApi boardsApi) {
         this.config = configurationFactory.getInstance();
+        this.boardsApi = boardsApi;
     }
 
     @Override
@@ -31,17 +36,23 @@ public final class BoardFrontend implements Feature {
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String board(@PathParam("boardTag") String boardTag) {
-        var boardPage = new BoardPage().consumeConfig(config);
+        var board = boardsApi.getBoardByTag(boardTag);
 
-        return boardPage.html();
+        if (board instanceof APIError error) {
+            return new MessagePage(config)
+                    .consumeResponse(error)
+                    .html();
+        }
+
+        return new BoardPage(config)
+                .html();
     }
 
     @GET
     @Path("/{threadId}")
     @Produces(MediaType.TEXT_HTML)
     public String thread(@PathParam("threadId") long threadId) {
-        var boardPage = new BoardPage().consumeConfig(config);
-
-        return boardPage.html();
+        return new BoardPage(config)
+                .html();
     }
 }

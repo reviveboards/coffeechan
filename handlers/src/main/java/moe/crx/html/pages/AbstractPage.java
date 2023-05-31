@@ -1,16 +1,29 @@
-package moe.crx.frontend.html.pages;
+package moe.crx.html.pages;
 
 import moe.crx.core.Configuration;
 import moe.crx.dto.APIError;
-import moe.crx.frontend.html.AbstractComponent;
-import moe.crx.frontend.html.components.ResponseMessage;
+import moe.crx.html.components.AbstractComponent;
+import moe.crx.html.components.ResponseMessage;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Calendar;
+
 public abstract class AbstractPage<T extends AbstractPage<T>> extends AbstractComponent<T> {
 
-    public AbstractPage(@NotNull String url) {
-        super(url);
+    private final long creationTimestamp = System.currentTimeMillis();
+
+    public AbstractPage(@NotNull String url, @NotNull Configuration config) {
+        super("/frontend/base_page.html");
+
+        final var pageContent = new AbstractComponent<T>(url) {};
+
+        getElement().getElementsByClass("coffeechan#pageContent").forEach(element ->
+                element.appendChild(pageContent.getElement()));
+
+        consumeConfig(config);
+
+        consumeYear(Calendar.getInstance().get(Calendar.YEAR));
     }
 
     public @NotNull T consumeMotd(@NotNull String motd) {
@@ -45,9 +58,24 @@ public abstract class AbstractPage<T extends AbstractPage<T>> extends AbstractCo
         return cast();
     }
 
-    public @NotNull T consumeConfig(@NotNull Configuration config) {
+    private @NotNull T consumeConfig(@NotNull Configuration config) {
         consumeMotd(config.getRandomMotd());
         consumeTitle(config.getTitle());
+
         return cast();
+    }
+
+    private @NotNull T consumeYear(int currentYear) {
+        getElement().getElementsByClass("coffeechan#currentYear").forEach(element ->
+                element.append(String.valueOf(currentYear)));
+
+        return cast();
+    }
+
+    public @NotNull String html() {
+        getElement().getElementsByClass("coffeechan#generationTime").forEach(element ->
+                element.append(" | generated in %d ms".formatted(System.currentTimeMillis() - creationTimestamp)));
+
+        return super.html();
     }
 }

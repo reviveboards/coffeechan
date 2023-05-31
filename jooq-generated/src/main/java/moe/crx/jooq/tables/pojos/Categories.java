@@ -19,21 +19,25 @@ public class Categories implements Serializable {
     private final Long id;
     private final String name;
     private final Long[] boards;
+    private final Boolean visible;
 
     public Categories(Categories value) {
         this.id = value.id;
         this.name = value.name;
         this.boards = value.boards;
+        this.visible = value.visible;
     }
 
     public Categories(
         Long id,
         String name,
-        Long[] boards
+        Long[] boards,
+        Boolean visible
     ) {
         this.id = id;
         this.name = name;
         this.boards = boards;
+        this.visible = visible;
     }
 
     /**
@@ -55,6 +59,13 @@ public class Categories implements Serializable {
      */
     public Long[] getBoards() {
         return this.boards;
+    }
+
+    /**
+     * Getter for <code>public.categories.visible</code>.
+     */
+    public Boolean getVisible() {
+        return this.visible;
     }
 
     @Override
@@ -84,6 +95,12 @@ public class Categories implements Serializable {
         }
         else if (!Arrays.equals(this.boards, other.boards))
             return false;
+        if (this.visible == null) {
+            if (other.visible != null)
+                return false;
+        }
+        else if (!this.visible.equals(other.visible))
+            return false;
         return true;
     }
 
@@ -94,6 +111,7 @@ public class Categories implements Serializable {
         result = prime * result + ((this.id == null) ? 0 : this.id.hashCode());
         result = prime * result + ((this.name == null) ? 0 : this.name.hashCode());
         result = prime * result + ((this.boards == null) ? 0 : Arrays.hashCode(this.boards));
+        result = prime * result + ((this.visible == null) ? 0 : this.visible.hashCode());
         return result;
     }
 
@@ -104,6 +122,7 @@ public class Categories implements Serializable {
         sb.append(id);
         sb.append(", ").append(name);
         sb.append(", ").append(Arrays.toString(boards));
+        sb.append(", ").append(visible);
 
         sb.append(")");
         return sb.toString();

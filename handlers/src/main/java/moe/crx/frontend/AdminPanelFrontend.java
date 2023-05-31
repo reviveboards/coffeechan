@@ -10,9 +10,7 @@ import moe.crx.api.BoardsApi;
 import moe.crx.api.CategoriesApi;
 import moe.crx.core.Configuration;
 import moe.crx.core.ConfigurationFactory;
-import moe.crx.dao.BoardDao;
-import moe.crx.dao.CategoryDao;
-import moe.crx.frontend.html.pages.AdminPanelPage;
+import moe.crx.html.pages.AdminPanelPage;
 import org.jetbrains.annotations.NotNull;
 
 @Path("/admin")
@@ -20,20 +18,14 @@ import org.jetbrains.annotations.NotNull;
 public final class AdminPanelFrontend implements Feature {
 
     private final Configuration config;
-    private final CategoryDao categoryDao;
-    private final BoardDao boardDao;
     private final BoardsApi boardsApi;
     private final CategoriesApi categoriesApi;
 
     @Inject
     public AdminPanelFrontend(@NotNull ConfigurationFactory configurationFactory,
-                              @NotNull BoardDao boardDao,
-                              @NotNull CategoryDao categoryDao,
                               @NotNull BoardsApi boardsApi,
                               @NotNull CategoriesApi categoriesApi) {
         this.config = configurationFactory.getInstance();
-        this.categoryDao = categoryDao;
-        this.boardDao = boardDao;
         this.boardsApi = boardsApi;
         this.categoriesApi = categoriesApi;
     }
@@ -46,9 +38,8 @@ public final class AdminPanelFrontend implements Feature {
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String adminPanel() {
-        return new AdminPanelPage()
-                .consumeConfig(config)
-                .consumeCategories(categoryDao, boardDao)
+        return new AdminPanelPage(config)
+                .consumeCategories(categoriesApi, boardsApi)
                 .html();
     }
 
@@ -57,12 +48,12 @@ public final class AdminPanelFrontend implements Feature {
     @Produces(MediaType.TEXT_HTML)
     public String createBoard(@QueryParam("name") String name,
                               @QueryParam("tag") String tag,
+                              @QueryParam("description") String description,
                               @QueryParam("parentCategory") long parentCategory) {
-        var response = boardsApi.create(name, tag, parentCategory);
+        var response = boardsApi.create(name, tag, parentCategory, description);
 
-        return new AdminPanelPage()
-                .consumeConfig(config)
-                .consumeCategories(categoryDao, boardDao)
+        return new AdminPanelPage(config)
+                .consumeCategories(categoriesApi, boardsApi)
                 .consumeResponse(response)
                 .html();
     }
@@ -73,9 +64,8 @@ public final class AdminPanelFrontend implements Feature {
     public String createCategory(@QueryParam("name") String name) {
         var response = categoriesApi.create(name);
 
-        return new AdminPanelPage()
-                .consumeConfig(config)
-                .consumeCategories(categoryDao, boardDao)
+        return new AdminPanelPage(config)
+                .consumeCategories(categoriesApi, boardsApi)
                 .consumeResponse(response)
                 .html();
     }

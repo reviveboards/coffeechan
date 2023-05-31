@@ -1,4 +1,4 @@
-package moe.crx.dao;
+package moe.crx.api;
 
 import com.google.inject.Inject;
 import moe.crx.core.ConfigurationFactory;
@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 import static moe.crx.jooq.Tables.POSTS;
 
-public final class PostDao extends AbstractDao<Post, PostsRecord, Long> {
+final class PostDao extends AbstractDao<Post, PostsRecord, Long> {
 
     @Inject
     public PostDao(@NotNull ConfigurationFactory configurationFactory) {

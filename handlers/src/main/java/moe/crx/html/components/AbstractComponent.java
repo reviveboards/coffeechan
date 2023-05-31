@@ -1,6 +1,6 @@
-package moe.crx.frontend.html;
+package moe.crx.html.components;
 
-import moe.crx.frontend.html.pages.AbstractPage;
+import moe.crx.html.pages.AbstractPage;
 import org.jetbrains.annotations.NotNull;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;

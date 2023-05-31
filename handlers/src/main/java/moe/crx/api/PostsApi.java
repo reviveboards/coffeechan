@@ -6,7 +6,6 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Feature;
 import jakarta.ws.rs.core.FeatureContext;
 import jakarta.ws.rs.core.MediaType;
-import moe.crx.dao.PostDao;
 import moe.crx.dto.APIError;
 import moe.crx.dto.Post;
 import org.jetbrains.annotations.NotNull;

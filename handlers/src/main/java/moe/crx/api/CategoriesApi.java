@@ -2,17 +2,15 @@ package moe.crx.api;
 
 import com.google.inject.Inject;
 import jakarta.inject.Singleton;
-import jakarta.ws.rs.FormParam;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Feature;
 import jakarta.ws.rs.core.FeatureContext;
 import jakarta.ws.rs.core.MediaType;
-import moe.crx.dao.CategoryDao;
 import moe.crx.dto.APIError;
 import moe.crx.dto.Category;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 @Singleton
 @Path("/api/categories")
@@ -40,6 +38,7 @@ public final class CategoriesApi implements Feature {
 
         var category = new Category();
         category.setName(name);
+        category.setVisible(true);
 
         try {
             category = categoryDao.create(category);
@@ -53,5 +52,12 @@ public final class CategoriesApi implements Feature {
         }
 
         return category;
+    }
+
+    @GET
+    @Path("/getAll")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Category> getAll() {
+        return categoryDao.all();
     }
 }

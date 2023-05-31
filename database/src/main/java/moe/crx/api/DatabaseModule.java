@@ -1,9 +1,7 @@
-package moe.crx.database;
+package moe.crx.api;
 
 import com.google.inject.AbstractModule;
-import moe.crx.dao.BoardDao;
-import moe.crx.dao.CategoryDao;
-import moe.crx.dao.PostDao;
+import moe.crx.database.FlywayFactory;
 
 public final class DatabaseModule extends AbstractModule {
 

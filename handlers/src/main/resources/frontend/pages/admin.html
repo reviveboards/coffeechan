@@ -1,41 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="/static/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/@vectopus/atlas-icons/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
-    <title class="coffechan#title"></title>
-
-    <script src="/static/js/jquery-3.6.4.min.js"></script>
+<div>
     <script src="/static/js/adminFE.js"></script>
-</head>
-<body>
-<div class="boardList">
-    <div class="listContent">
-        <div class="stripBoard">/b/</div>
-        <div class="stripBoard">/soc/</div>
-        <div class="stripBoard">/pol/</div>
-    </div>
-    <div class="maintenanceList">
-        <a class="settingButton" href="#">[theme]</a>
-    </div>
-</div>
-<div class="pageContent">
     <header class="mainPageHeading">
         <div class="naming">
             <div class="boardTitle">/~ Admin</div>
             <div class="boardSlogan coffeechan#motd"></div>
         </div>
     </header>
-    <div class="coffeechan#responseMessage">
-    </div>
+
     <main class="panels">
         <div class="leftContent">
             <div class="card">
@@ -60,8 +31,8 @@
                     </div>
                 </div>
             </div>
-
         </div>
+
         <div class="rightContent">
             <div class="card">
                 <span class="cardHeader">
@@ -94,7 +65,7 @@
                                 <input type="text" name="name" placeholder="Board name" id="bN">
                             </div>
                             <div>
-                                <input type="text" name="boardDesc" placeholder="Board description" id="bD">
+                                <input type="text" name="description" placeholder="Board description" id="bD">
                             </div>
                             <div>
                                 <input type="text" name="tag" placeholder="Board tag" id="bL">
@@ -102,10 +73,12 @@
                             <div>
                                 <label for="bC">Board category: </label><select class="coffeechan#categoriesCombobox" name="parentCategory" id="bC"></select>
                             </div>
-                            <div>
-                                <label for="bSplash">Board splash: </label><input type="file" name="boardSplash" id="bSplash">
-                            </div>
-                            <div class="togglers">
+                            <!-- Unsupported for now. -->
+                            <!-- <div>
+                                <label for="bSplash">Board header: </label><input type="file" name="header" id="bSplash">
+                            </div> -->
+                            <!-- What does this mean? -->
+                            <!-- <div class="togglers">
                                 <span class="optionToggler">
                                         Use CAPTCHA
                                         <label class="switch">
@@ -127,7 +100,7 @@
                                             <span class="slider round"></span>
                                         </label>
                                 </span>
-                            </div>
+                            </div> -->
                             <button type="submit">Create board</button>
                         </form>
                     </div>
@@ -142,8 +115,3 @@
         </div>
     </main>
 </div>
-<footer>
-    <p>2023, reviveboards x nnproject</p>
-</footer>
-</body>
-</html>

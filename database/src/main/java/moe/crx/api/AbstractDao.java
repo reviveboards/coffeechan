@@ -1,15 +1,14 @@
-package moe.crx.dao;
+package moe.crx.api;
 
 import moe.crx.core.ConfigurationFactory;
 import moe.crx.database.HikariConnectable;
-import moe.crx.dto.Board;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jooq.*;
 
 import java.util.List;
 
-public abstract class AbstractDao<Type, RecordType extends UpdatableRecord<?>, KeyType> extends HikariConnectable {
+abstract class AbstractDao<Type, RecordType extends UpdatableRecord<?>, KeyType> extends HikariConnectable {
 
     private final Table<RecordType> table;
     private final TableField<RecordType, KeyType> keyField;
@@ -33,9 +32,13 @@ public abstract class AbstractDao<Type, RecordType extends UpdatableRecord<?>, K
     }
 
     public @Nullable Type read(@NotNull KeyType id) {
+        return readBy(keyField, id);
+    }
+
+    public @Nullable <FieldType> Type readBy(@NotNull TableField<RecordType, FieldType> field, @NotNull FieldType value) {
         try (var c = getConnection()) {
             return c.context()
-                    .fetchOptional(table, keyField.eq(id))
+                    .fetchOptional(table, field.eq(value))
                     .map(r -> r.into(clazz))
                     .orElse(null);
         }
