@@ -12,7 +12,7 @@ import moe.crx.dao.BoardDao;
 import moe.crx.frontend.html.pages.BoardsPage;
 import org.jetbrains.annotations.NotNull;
 
-@Path("/boards")
+@Path("/")
 @Singleton
 public final class BoardsFrontend implements Feature {
 
@@ -33,9 +33,17 @@ public final class BoardsFrontend implements Feature {
 
     @GET
     @Produces(MediaType.TEXT_HTML)
-    public String boards() {
+    public String index() {
         var boardsPage = new BoardsPage().consumeBoards(boardDao.all()).consumeConfig(config);
 
         return boardsPage.html();
+    }
+
+
+    @Path("/boards")
+    @GET
+    @Produces(MediaType.TEXT_HTML)
+    public String boards() {
+        return index();
     }
 }

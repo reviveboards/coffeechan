@@ -34,13 +34,42 @@
             <div class="boardSlogan coffeechan#motd"></div>
         </div>
     </header>
+    <div class="coffeechan#response">
+        <!-- <div class="card">
+            <span class="cardHeader">
+                <span class="green cardBullet"></span>
+                <p class="cardName">Message</p>
+            </span>
+            <div class="cardContent">
+                Board has been successfully created.
+            </div>
+        </div>
+        <div class="card" style="background-color: #8F8528;">
+            <span class="cardHeader" style="background-color: #423D0D;">
+                <span class="yellow cardBullet"></span>
+                <p class="cardName">Warning</p>
+            </span>
+            <div class="cardContent">
+                This action is irreversible.
+            </div>
+        </div>
+        <div class="card" style="background-color: #8F2828;">
+            <span class="cardHeader" style="background-color: #420D0D;">
+                <span class="red cardBullet"></span>
+                <p class="cardName">Error</p>
+            </span>
+            <div class="cardContent">
+                Board with specified tag is already exist.
+            </div>
+        </div> -->
+    </div>
     <main class="panels">
         <div class="leftContent">
             <div class="card">
-                            <span class="cardHeader">
-                                <span class="blue cardBullet"></span>
-                                <p class="cardName">Admin menu</p>
-                            </span>
+                <span class="cardHeader">
+                    <span class="blue cardBullet"></span>
+                    <p class="cardName">Admin menu</p>
+                </span>
                 <div class="cardContent">
                     <div class="adminList">
                             <span class="adminListItem" id="bAdminListItem">
@@ -62,13 +91,15 @@
         </div>
         <div class="rightContent">
             <div class="card">
-                    <span class="cardHeader">
-                        <span class="red cardBullet"></span>
-                        <p class="cardName" id="adminPanelHeader">Actions</p>
-                    </span>
+                <span class="cardHeader">
+                    <span class="red cardBullet"></span>
+                    <p class="cardName" id="adminPanelHeader">Actions</p>
+                </span>
+
                 <div class="cardContent statistics">
                     Some statistics
                 </div>
+
                 <div class="cardContent boardManager">
                     <div class="coffeechan#categories">
                         <button id="boardMgrCreateNewCategory">+ Create new category</button>
@@ -78,7 +109,7 @@
                     <div class="card" id="boardMgrCreateCategoryForm" style="margin-left: 12px">
                         <form action="/admin/createCategory" class="cardContent">
                             <div>
-                                <input type="text" name="categoryName" placeholder="Category name" id="cN">
+                                <input type="text" name="name" placeholder="Category name" id="cN">
                             </div>
                             <button type="submit">Create category</button>
                         </form>
@@ -87,16 +118,16 @@
                     <div class="card" id="boardMgrCreateBoardForm" style="margin-left: 12px">
                         <form action="/admin/createBoard" class="cardContent">
                             <div>
-                                <input type="text" name="boardName" placeholder="Board name" id="bN">
+                                <input type="text" name="name" placeholder="Board name" id="bN">
                             </div>
                             <div>
                                 <input type="text" name="boardDesc" placeholder="Board description" id="bD">
                             </div>
                             <div>
-                                <input type="text" name="boardLink" placeholder="Board link" id="bL">
+                                <input type="text" name="tag" placeholder="Board tag" id="bL">
                             </div>
                             <div>
-                                <label for="bC">Board category: </label><select class="coffeechan#categoriesCombobox" name="boardCategory" id="bC"></select>
+                                <label for="bC">Board category: </label><select class="coffeechan#categoriesCombobox" name="parentCategory" id="bC"></select>
                             </div>
                             <div>
                                 <label for="bSplash">Board splash: </label><input type="file" name="boardSplash" id="bSplash">

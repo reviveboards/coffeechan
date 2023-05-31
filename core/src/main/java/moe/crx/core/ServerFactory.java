@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 public final class ServerFactory {
 
-    private int port;
+    private final int port;
 
     @Inject
     public ServerFactory(@NotNull ConfigurationFactory configurationFactory) {
