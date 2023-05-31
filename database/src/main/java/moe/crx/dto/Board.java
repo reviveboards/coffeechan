@@ -23,4 +23,9 @@ public final class Board {
     public String getTagSlashed() {
         return "/" + tag + "/";
     }
+
+    @JsonIgnore
+    public String getLink() {
+        return getTagSlashed();
+    }
 }

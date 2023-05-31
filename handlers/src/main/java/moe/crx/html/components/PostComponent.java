@@ -1,6 +1,4 @@
-package moe.crx.frontend.html.components;
-
-import moe.crx.frontend.html.AbstractComponent;
+package moe.crx.html.components;
 
 public final class PostComponent extends AbstractComponent<PostComponent> {
 

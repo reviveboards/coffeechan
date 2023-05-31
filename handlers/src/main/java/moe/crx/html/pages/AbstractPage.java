@@ -1,9 +1,9 @@
-package moe.crx.frontend.html.pages;
+package moe.crx.html.pages;
 
 import moe.crx.core.Configuration;
 import moe.crx.dto.APIError;
-import moe.crx.frontend.html.AbstractComponent;
-import moe.crx.frontend.html.components.ResponseMessage;
+import moe.crx.html.components.AbstractComponent;
+import moe.crx.html.components.ResponseMessage;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

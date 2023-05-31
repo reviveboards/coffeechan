@@ -12,7 +12,7 @@ import moe.crx.core.Configuration;
 import moe.crx.core.ConfigurationFactory;
 import moe.crx.dao.BoardDao;
 import moe.crx.dao.CategoryDao;
-import moe.crx.frontend.html.pages.AdminPanelPage;
+import moe.crx.html.pages.AdminPanelPage;
 import org.jetbrains.annotations.NotNull;
 
 @Path("/admin")

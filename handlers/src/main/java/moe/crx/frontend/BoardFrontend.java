@@ -6,9 +6,8 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Feature;
 import jakarta.ws.rs.core.FeatureContext;
 import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
 import moe.crx.core.ConfigurationFactory;
-import moe.crx.frontend.html.pages.BoardPage;
+import moe.crx.html.pages.BoardPage;
 import moe.crx.core.Configuration;
 import org.jetbrains.annotations.NotNull;
 

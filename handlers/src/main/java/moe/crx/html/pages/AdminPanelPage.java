@@ -1,11 +1,11 @@
-package moe.crx.frontend.html.pages;
+package moe.crx.html.pages;
 
 import moe.crx.dao.BoardDao;
 import moe.crx.dao.CategoryDao;
 import moe.crx.dto.Board;
 import moe.crx.dto.Category;
-import moe.crx.frontend.html.components.BoardManagerCategory;
-import moe.crx.frontend.html.components.ResponseMessage;
+import moe.crx.html.components.BoardManagerCategory;
+import moe.crx.html.components.ResponseMessage;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

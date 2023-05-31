@@ -372,6 +372,7 @@ a:visited {
 }
 
 .boardsListCategory {
+    flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
@@ -382,8 +383,13 @@ a:visited {
     margin: 0.1rem 0 0.1rem 0;
 }
 
+.boardsListCategory > a > .boardTagSlashed {
+    font-weight: 600;
+    padding-right: 0.5rem;
+}
+
 .boardsListCategory > a {
-    margin-left: 0.5rem;
+    //margin-left: 0.5rem;
 }
 
 /* Board list */

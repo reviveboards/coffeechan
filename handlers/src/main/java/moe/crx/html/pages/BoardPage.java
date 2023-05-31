@@ -1,6 +1,6 @@
-package moe.crx.frontend.html.pages;
+package moe.crx.html.pages;
 
-import moe.crx.frontend.html.components.PostComponent;
+import moe.crx.html.components.PostComponent;
 
 public final class BoardPage extends AbstractPage<BoardPage> {
 

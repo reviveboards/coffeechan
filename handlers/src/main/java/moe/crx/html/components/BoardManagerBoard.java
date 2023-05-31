@@ -1,7 +1,6 @@
-package moe.crx.frontend.html.components;
+package moe.crx.html.components;
 
 import moe.crx.dto.Board;
-import moe.crx.frontend.html.AbstractComponent;
 import org.jetbrains.annotations.NotNull;
 
 public final class BoardManagerBoard extends AbstractComponent<BoardManagerBoard> {

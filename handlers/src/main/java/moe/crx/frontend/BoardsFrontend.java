@@ -9,7 +9,8 @@ import jakarta.ws.rs.core.*;
 import moe.crx.core.Configuration;
 import moe.crx.core.ConfigurationFactory;
 import moe.crx.dao.BoardDao;
-import moe.crx.frontend.html.pages.BoardsPage;
+import moe.crx.dao.CategoryDao;
+import moe.crx.html.pages.BoardsPage;
 import org.jetbrains.annotations.NotNull;
 
 @Path("/")
@@ -17,12 +18,15 @@ import org.jetbrains.annotations.NotNull;
 public final class BoardsFrontend implements Feature {
 
     private final BoardDao boardDao;
+    private final CategoryDao categoryDao;
     private final Configuration config;
 
     @Inject
     public BoardsFrontend(@NotNull BoardDao boardDao,
+                          @NotNull CategoryDao categoryDao,
                           @NotNull ConfigurationFactory configurationFactory) {
         this.boardDao = boardDao;
+        this.categoryDao = categoryDao;
         this.config = configurationFactory.getInstance();
     }
 
@@ -34,9 +38,10 @@ public final class BoardsFrontend implements Feature {
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String index() {
-        var boardsPage = new BoardsPage().consumeBoards(boardDao.all()).consumeConfig(config);
-
-        return boardsPage.html();
+        return new BoardsPage()
+                .consumeBoards(categoryDao, boardDao)
+                .consumeConfig(config)
+                .html();
     }
 
 
