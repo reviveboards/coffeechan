@@ -34,7 +34,8 @@ public final class BoardsApi implements Feature {
     @Produces(MediaType.APPLICATION_JSON)
     public Object create(@FormParam("name") String name,
                          @FormParam("tag") String tag,
-                         @FormParam("parentCategory") long parentCategory) {
+                         @FormParam("parentCategory") long parentCategory,
+                         @FormParam("description") String description) {
         try {
             var category = categoryDao.read(parentCategory);
 
@@ -46,6 +47,8 @@ public final class BoardsApi implements Feature {
             board.setName(name);
             board.setTag(tag);
             board.setParentCategory(parentCategory);
+            board.setDescription(description);
+            board.setVisible(true);
 
             board = boardDao.create(board);
             if (board == null) {

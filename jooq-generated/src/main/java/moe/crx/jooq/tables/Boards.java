@@ -14,12 +14,12 @@ import moe.crx.jooq.tables.records.BoardsRecord;
 
 import org.jooq.Field;
 import org.jooq.ForeignKey;
-import org.jooq.Function8;
+import org.jooq.Function9;
 import org.jooq.Identity;
 import org.jooq.Name;
 import org.jooq.Record;
 import org.jooq.Records;
-import org.jooq.Row8;
+import org.jooq.Row9;
 import org.jooq.Schema;
 import org.jooq.SelectField;
 import org.jooq.Table;
@@ -91,6 +91,11 @@ public class Boards extends TableImpl<BoardsRecord> {
      * The column <code>public.boards.headerImage</code>.
      */
     public final TableField<BoardsRecord, Long> HEADERIMAGE = createField(DSL.name("headerImage"), SQLDataType.BIGINT.nullable(false).defaultValue(DSL.field("0", SQLDataType.BIGINT)), this, "");
+
+    /**
+     * The column <code>public.boards.parentCategory</code>.
+     */
+    public final TableField<BoardsRecord, Long> PARENTCATEGORY = createField(DSL.name("parentCategory"), SQLDataType.BIGINT.nullable(false).defaultValue(DSL.field("0", SQLDataType.BIGINT)), this, "");
 
     private Boards(Name alias, Table<BoardsRecord> aliased) {
         this(alias, aliased, null);
@@ -185,18 +190,18 @@ public class Boards extends TableImpl<BoardsRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row8 type methods
+    // Row9 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row8<Long, String, String, String, Boolean, Boolean, Boolean, Long> fieldsRow() {
-        return (Row8) super.fieldsRow();
+    public Row9<Long, String, String, String, Boolean, Boolean, Boolean, Long, Long> fieldsRow() {
+        return (Row9) super.fieldsRow();
     }
 
     /**
      * Convenience mapping calling {@link SelectField#convertFrom(Function)}.
      */
-    public <U> SelectField<U> mapping(Function8<? super Long, ? super String, ? super String, ? super String, ? super Boolean, ? super Boolean, ? super Boolean, ? super Long, ? extends U> from) {
+    public <U> SelectField<U> mapping(Function9<? super Long, ? super String, ? super String, ? super String, ? super Boolean, ? super Boolean, ? super Boolean, ? super Long, ? super Long, ? extends U> from) {
         return convertFrom(Records.mapping(from));
     }
 
@@ -204,7 +209,7 @@ public class Boards extends TableImpl<BoardsRecord> {
      * Convenience mapping calling {@link SelectField#convertFrom(Class,
      * Function)}.
      */
-    public <U> SelectField<U> mapping(Class<U> toType, Function8<? super Long, ? super String, ? super String, ? super String, ? super Boolean, ? super Boolean, ? super Boolean, ? super Long, ? extends U> from) {
+    public <U> SelectField<U> mapping(Class<U> toType, Function9<? super Long, ? super String, ? super String, ? super String, ? super Boolean, ? super Boolean, ? super Boolean, ? super Long, ? super Long, ? extends U> from) {
         return convertFrom(toType, Records.mapping(from));
     }
 }

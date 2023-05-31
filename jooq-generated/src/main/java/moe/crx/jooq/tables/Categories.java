@@ -12,12 +12,12 @@ import moe.crx.jooq.tables.records.CategoriesRecord;
 
 import org.jooq.Field;
 import org.jooq.ForeignKey;
-import org.jooq.Function3;
+import org.jooq.Function4;
 import org.jooq.Identity;
 import org.jooq.Name;
 import org.jooq.Record;
 import org.jooq.Records;
-import org.jooq.Row3;
+import org.jooq.Row4;
 import org.jooq.Schema;
 import org.jooq.SelectField;
 import org.jooq.Table;
@@ -64,6 +64,11 @@ public class Categories extends TableImpl<CategoriesRecord> {
      * The column <code>public.categories.boards</code>.
      */
     public final TableField<CategoriesRecord, Long[]> BOARDS = createField(DSL.name("boards"), SQLDataType.BIGINT.getArrayDataType(), this, "");
+
+    /**
+     * The column <code>public.categories.visible</code>.
+     */
+    public final TableField<CategoriesRecord, Boolean> VISIBLE = createField(DSL.name("visible"), SQLDataType.BOOLEAN.nullable(false).defaultValue(DSL.field("false", SQLDataType.BOOLEAN)), this, "");
 
     private Categories(Name alias, Table<CategoriesRecord> aliased) {
         this(alias, aliased, null);
@@ -153,18 +158,18 @@ public class Categories extends TableImpl<CategoriesRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row3 type methods
+    // Row4 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row3<Long, String, Long[]> fieldsRow() {
-        return (Row3) super.fieldsRow();
+    public Row4<Long, String, Long[], Boolean> fieldsRow() {
+        return (Row4) super.fieldsRow();
     }
 
     /**
      * Convenience mapping calling {@link SelectField#convertFrom(Function)}.
      */
-    public <U> SelectField<U> mapping(Function3<? super Long, ? super String, ? super Long[], ? extends U> from) {
+    public <U> SelectField<U> mapping(Function4<? super Long, ? super String, ? super Long[], ? super Boolean, ? extends U> from) {
         return convertFrom(Records.mapping(from));
     }
 
@@ -172,7 +177,7 @@ public class Categories extends TableImpl<CategoriesRecord> {
      * Convenience mapping calling {@link SelectField#convertFrom(Class,
      * Function)}.
      */
-    public <U> SelectField<U> mapping(Class<U> toType, Function3<? super Long, ? super String, ? super Long[], ? extends U> from) {
+    public <U> SelectField<U> mapping(Class<U> toType, Function4<? super Long, ? super String, ? super Long[], ? super Boolean, ? extends U> from) {
         return convertFrom(toType, Records.mapping(from));
     }
 }

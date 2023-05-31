@@ -40,6 +40,7 @@ public final class CategoriesApi implements Feature {
 
         var category = new Category();
         category.setName(name);
+        category.setVisible(true);
 
         try {
             category = categoryDao.create(category);

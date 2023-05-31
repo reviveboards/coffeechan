@@ -57,8 +57,9 @@ public final class AdminPanelFrontend implements Feature {
     @Produces(MediaType.TEXT_HTML)
     public String createBoard(@QueryParam("name") String name,
                               @QueryParam("tag") String tag,
+                              @QueryParam("description") String description,
                               @QueryParam("parentCategory") long parentCategory) {
-        var response = boardsApi.create(name, tag, parentCategory);
+        var response = boardsApi.create(name, tag, parentCategory, description);
 
         return new AdminPanelPage()
                 .consumeConfig(config)

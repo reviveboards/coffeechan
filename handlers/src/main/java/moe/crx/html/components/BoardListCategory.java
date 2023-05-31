@@ -12,12 +12,17 @@ public final class BoardListCategory extends AbstractComponent<BoardListCategory
     }
 
     public BoardListCategory consumeCategory(Category category, List<Board> boards) {
-        var boardsElements = boards.stream().map(board -> new BoardListBoard().consumeBoard(board).getElement()).toList();
+        var boardsElements = boards.stream().filter(Board::isVisible).map(board -> new BoardListBoard().consumeBoard(board).getElement()).toList();
 
         getElement().getElementsByClass("coffeechan#categoryName").forEach(element ->
                 element.append(category.getName()));
-        getElement().getElementsByClass("coffeechan#categoryBoards").forEach(element ->
-                element.appendChildren(boardsElements));
+        getElement().getElementsByClass("coffeechan#categoryBoards").forEach(element -> {
+            if (boardsElements.isEmpty()) {
+                element.append("*no boards*");
+            } else {
+                element.appendChildren(boardsElements);
+            }
+        });
 
         return this;
     }
