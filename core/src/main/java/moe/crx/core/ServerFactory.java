@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 public final class ServerFactory {
 
-    private int port;
+    private final int port;
 
     @Inject
     public ServerFactory(@NotNull ConfigurationFactory configurationFactory) {
@@ -19,6 +19,7 @@ public final class ServerFactory {
         connector.setHost("localhost");
         connector.setPort(port);
         server.setConnectors(new Connector[] { connector });
+        server.setRequestLog(new CustomRequestLog());
         return server;
     }
 }

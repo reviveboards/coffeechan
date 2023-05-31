@@ -44,6 +44,7 @@ public final class CategoriesApi implements Feature {
         try {
             category = categoryDao.create(category);
         } catch (Exception e) {
+            e.printStackTrace();
             return new APIError(0, e.getCause().getMessage());
         }
 

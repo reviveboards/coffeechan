@@ -86,6 +86,8 @@ allprojects {
         implementation("org.glassfish.jersey.media:jersey-media-multipart:3.1.1")
 
         implementation("org.jsoup:jsoup:1.15.4")
+
+        implementation("org.slf4j:slf4j-simple:2.0.7")
     }
 
     tasks.getByName<Test>("test") {

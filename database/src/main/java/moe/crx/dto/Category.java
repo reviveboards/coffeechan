@@ -12,6 +12,6 @@ import java.util.List;
 public final class Category {
     private long id;
     private String name;
-    private List<Long> boards;
+    private List<Long> boards = List.of();
     private boolean visible;
 }

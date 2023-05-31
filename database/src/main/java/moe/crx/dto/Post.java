@@ -15,10 +15,10 @@ public final class Post {
     private long poster;
     private long parentBoard;
     private long parentPost;
-    private Date creationDate;
+    private Date creationDate = new Date();
     private String title;
     private String message;
     private boolean locked;
     private boolean visible;
-    private List<Long> images;
+    private List<Long> images = List.of();
 }

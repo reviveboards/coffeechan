@@ -40,6 +40,7 @@ public final class PostsApi implements Feature {
             var created = postDao.create(post);
             return created;
         } catch (Exception e) {
+            e.printStackTrace();
             return new APIError();
         }
     }
