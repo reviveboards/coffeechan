@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public final class APIError {
-    private int errorCode;
-    private String errorMessage;
+    private int errorCode = 0;
+    private String errorMessage = "Unknown error";
 }

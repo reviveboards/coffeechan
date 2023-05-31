@@ -7,8 +7,10 @@ import jakarta.ws.rs.core.Feature;
 import jakarta.ws.rs.core.FeatureContext;
 import jakarta.ws.rs.core.MediaType;
 import moe.crx.api.BoardsApi;
+import moe.crx.api.PostsApi;
 import moe.crx.core.ConfigurationFactory;
 import moe.crx.dto.APIError;
+import moe.crx.dto.Board;
 import moe.crx.html.pages.BoardPage;
 import moe.crx.core.Configuration;
 import moe.crx.html.pages.MessagePage;
@@ -20,12 +22,15 @@ public final class BoardFrontend implements Feature {
 
     private final Configuration config;
     private final BoardsApi boardsApi;
+    private final PostsApi postsApi;
 
     @Inject
     public BoardFrontend(@NotNull ConfigurationFactory configurationFactory,
-                         @NotNull BoardsApi boardsApi) {
+                         @NotNull BoardsApi boardsApi,
+                         @NotNull PostsApi postsApi) {
         this.config = configurationFactory.getInstance();
         this.boardsApi = boardsApi;
+        this.postsApi = postsApi;
     }
 
     @Override
@@ -36,15 +41,16 @@ public final class BoardFrontend implements Feature {
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String board(@PathParam("boardTag") String boardTag) {
-        var board = boardsApi.getBoardByTag(boardTag);
+        var response = boardsApi.getBoardByTag(boardTag);
 
-        if (board instanceof APIError error) {
+        if (!(response instanceof Board board)) {
             return new MessagePage(config)
-                    .consumeResponse(error)
+                    .consumeResponse(response)
                     .html();
         }
 
         return new BoardPage(config)
+                .consumeBoard(board, postsApi)
                 .html();
     }
 

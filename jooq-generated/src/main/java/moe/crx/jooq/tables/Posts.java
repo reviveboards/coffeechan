@@ -69,7 +69,7 @@ public class Posts extends TableImpl<PostsRecord> {
     /**
      * The column <code>public.posts.parentpost</code>.
      */
-    public final TableField<PostsRecord, Long> PARENTPOST = createField(DSL.name("parentpost"), SQLDataType.BIGINT, this, "");
+    public final TableField<PostsRecord, Long> PARENTPOST = createField(DSL.name("parentpost"), SQLDataType.BIGINT.nullable(false), this, "");
 
     /**
      * The column <code>public.posts.creationdate</code>.

@@ -6,9 +6,10 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Feature;
 import jakarta.ws.rs.core.FeatureContext;
 import jakarta.ws.rs.core.MediaType;
-import moe.crx.dto.APIError;
 import moe.crx.dto.Post;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 @Singleton
 @Path("/api/posts")
@@ -26,21 +27,10 @@ public final class PostsApi implements Feature {
         return true;
     }
 
-    @POST
-    @Path("/create")
+    @GET
+    @Path("/getThreads")
     @Produces(MediaType.APPLICATION_JSON)
-    public Object create(@FormParam("title") String title,
-                         @FormParam("message") String message) {
-        var post = new Post();
-        post.setTitle(title);
-        post.setMessage(message);
-
-        try {
-            var created = postDao.create(post);
-            return created;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new APIError();
-        }
+    public List<Post> getThreads(@QueryParam("board") long boardId) {
+        return postDao.getThreads(boardId);
     }
 }

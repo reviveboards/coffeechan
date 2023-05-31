@@ -44,10 +44,10 @@ abstract class AbstractDao<Type, RecordType extends UpdatableRecord<?>, KeyType>
         }
     }
 
-    public @NotNull List<@NotNull Type> readAll(@NotNull List<@NotNull KeyType> boards) {
+    public @NotNull List<@NotNull Type> readAll(@NotNull List<@NotNull KeyType> ids) {
         try (var c = getConnection()) {
             return c.context()
-                    .fetch(table, keyField.in(boards))
+                    .fetch(table, keyField.in(ids))
                     .map(r -> r.into(clazz));
         }
     }

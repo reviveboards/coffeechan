@@ -15,7 +15,7 @@ CREATE TABLE public.posts
     id bigserial NOT NULL,
     poster bigint NOT NULL,
     parentBoard bigint NOT NULL,
-    parentPost bigint,
+    parentPost bigint NOT NULL,
     creationDate timestamp NOT NULL,
     title character varying,
     message character varying,
