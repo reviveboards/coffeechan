@@ -1,5 +1,6 @@
 package moe.crx.html.pages;
 
+import moe.crx.core.Configuration;
 import moe.crx.dao.BoardDao;
 import moe.crx.dao.CategoryDao;
 import moe.crx.dto.Board;
@@ -9,10 +10,10 @@ import moe.crx.html.components.ResponseMessage;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class AdminPanelPage extends AbstractPage<AdminPanelPage> {
+public final class AdminPanelPage extends AbstractPage<AdminPanelPage> {
 
-    public AdminPanelPage() {
-        super("/frontend/pages/admin.html");
+    public AdminPanelPage(@NotNull Configuration config) {
+        super("/frontend/pages/admin.html", config);
     }
 
     public AdminPanelPage consumeCategories(CategoryDao categoryDao, BoardDao boardDao) {

@@ -46,8 +46,7 @@ public final class AdminPanelFrontend implements Feature {
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String adminPanel() {
-        return new AdminPanelPage()
-                .consumeConfig(config)
+        return new AdminPanelPage(config)
                 .consumeCategories(categoryDao, boardDao)
                 .html();
     }
@@ -61,8 +60,7 @@ public final class AdminPanelFrontend implements Feature {
                               @QueryParam("parentCategory") long parentCategory) {
         var response = boardsApi.create(name, tag, parentCategory, description);
 
-        return new AdminPanelPage()
-                .consumeConfig(config)
+        return new AdminPanelPage(config)
                 .consumeCategories(categoryDao, boardDao)
                 .consumeResponse(response)
                 .html();
@@ -74,8 +72,7 @@ public final class AdminPanelFrontend implements Feature {
     public String createCategory(@QueryParam("name") String name) {
         var response = categoriesApi.create(name);
 
-        return new AdminPanelPage()
-                .consumeConfig(config)
+        return new AdminPanelPage(config)
                 .consumeCategories(categoryDao, boardDao)
                 .consumeResponse(response)
                 .html();

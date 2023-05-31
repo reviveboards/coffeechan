@@ -33,9 +33,13 @@ public abstract class AbstractDao<Type, RecordType extends UpdatableRecord<?>, K
     }
 
     public @Nullable Type read(@NotNull KeyType id) {
+        return readBy(keyField, id);
+    }
+
+    public @Nullable <FieldType> Type readBy(@NotNull TableField<RecordType, FieldType> field, @NotNull FieldType value) {
         try (var c = getConnection()) {
             return c.context()
-                    .fetchOptional(table, keyField.eq(id))
+                    .fetchOptional(table, field.eq(value))
                     .map(r -> r.into(clazz))
                     .orElse(null);
         }

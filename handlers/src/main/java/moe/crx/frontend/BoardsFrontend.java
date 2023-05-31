@@ -38,9 +38,8 @@ public final class BoardsFrontend implements Feature {
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String index() {
-        return new BoardsPage()
+        return new BoardsPage(config)
                 .consumeBoards(categoryDao, boardDao)
-                .consumeConfig(config)
                 .html();
     }
 
