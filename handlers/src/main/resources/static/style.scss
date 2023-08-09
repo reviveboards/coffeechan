@@ -339,6 +339,10 @@ a:visited {
     box-shadow: $down-shadow;
 }
 
+.boardTagSlashed:hover {
+    text-decoration: underline;
+}
+
 .cardName {
     margin: 0;
 }
@@ -389,7 +393,7 @@ a:visited {
 
 .boardsListCategory > a > .boardTagSlashed {
     font-weight: 600;
-    padding-right: 0.5rem;
+    //padding-right: 0.5rem;
 }
 
 .boardsListCategory > a {

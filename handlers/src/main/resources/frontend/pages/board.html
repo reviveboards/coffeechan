@@ -43,7 +43,58 @@
                         <p class="cardName">Board of the day</p>
                     </span>
                 <div class="cardContent">
-                    []
+                    <p class="cardName">/b/</p>
+                    <p>Posts per hour: 69</p>
+                    <p>Unique Users: 420</p>
+                    <p>Users per hour:</p>
+                    <canvas id="pph-chart"></canvas>
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-gradient"></script>
+
+                    <script>
+                        const ctx = document.getElementById('pph-chart');
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: ['6h', '5h', '4h', '3h', '2h', '1h'],
+                                datasets: [{
+                                    label: '',
+                                    data: [12, 19, 3, 5, 2, 3],
+                                    barThickness: 9,
+                                    borderRadius: 5,
+                                    borderWidth: 2,
+                                    borderColor: 'rgba(122,202,85,1)',
+                                    gradient: {
+                                        backgroundColor: {
+                                            axis: 'y',
+                                            colors: {
+                                                0: 'rgba(124,124,124,0.33)',
+                                                95: 'rgba(122,202,85,1)'
+                                            }
+                                        }
+                                    }
+                                }]
+                            },
+                            options: {
+                                plugins: {
+                                    legend: {
+                                        display: false,
+                                    },
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true
+                                        }
+                                    },
+
+                                }
+                            },
+                            plugins: [
+                                window['chartjs-plugin-gradient']
+                            ]
+                        });
+                    </script>
+
+
                 </div>
             </div>
             <div class="card">
