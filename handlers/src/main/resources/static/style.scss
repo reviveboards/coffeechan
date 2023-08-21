@@ -1,4 +1,4 @@
-@import "themes/basalt";
+@import "themes/marble";
 
 $radius: 15px;
 $p: 13px;
@@ -573,6 +573,17 @@ textarea {
 
 .boardMgrEditButton:hover {
     color: $yellow;
+}
+
+.markedThread {
+    margin: 0;
+    padding: $p/2;
+    font-size: 14px;
+}
+
+.mTImg {
+    border-radius: $radius/4;
+    height: 8rem;
 }
 
 /**/
