@@ -1,4 +1,4 @@
-@import "themes/marble";
+@import "themes/basalt";
 
 $radius: 15px;
 $p: 13px;
@@ -167,8 +167,13 @@ button {
     background-color: $less_darker;
     font-weight: 600;
     font-size: 18px;
-    padding: 0 3.125rem 0 3.125rem;
+    padding: 0 3.125rem 0 0;
     margin: 0;
+}
+
+.homeBtn {
+    width: 3.125rem;
+    text-align: center;
 }
 
 .maintenanceList {
@@ -198,6 +203,10 @@ a:visited {
         display: none;
     }
     .boardSplash {
+        display: none;
+    }
+
+    .boardRightContent {
         display: none;
     }
 }
@@ -575,15 +584,54 @@ textarea {
     color: $yellow;
 }
 
+.mTHandler {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
 .markedThread {
     margin: 0;
     padding: $p/2;
     font-size: 14px;
+
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 15vh;
 }
 
 .mTImg {
     border-radius: $radius/4;
-    height: 8rem;
+
+}
+
+.mTImg > img {
+    height: 15vh;
+    width: 15vh;
+}
+
+.mTText {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+}
+
+.mTMenu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    gap: 3px;
+}
+
+.newRepliesAnnouncer {
+    margin: 0;
+    color: $red;
+    font-weight: bold;
 }
 
 /**/
