@@ -333,7 +333,7 @@ a:visited {
     border-radius: 13px 13px 0 0;
     font-weight: bolder;
     gap: 0.7rem;
-    padding: var(--p) / 2.5 --p --p/2.5 --p;
+    padding: calc(var(--p) / 2.5) var(--p) calc(var(--p) / 2.5) var(--p);
     background-color: var(--less_darker);
 
 }
