@@ -59,7 +59,7 @@
         const themeSelector = document.getElementById("themeSelector");
         const themeLink = document.getElementById("themeLink");
         const currentTheme = localStorage.getItem("theme") || "basalt";
-        
+
         function activateTheme(themeName) {
             themeLink.setAttribute("href", `/static/themes/${themeName}.css`);
         }
