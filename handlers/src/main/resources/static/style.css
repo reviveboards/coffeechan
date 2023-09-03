@@ -23,6 +23,15 @@ body {
     align-content: stretch;
 }
 
+p {
+    margin: 0;
+}
+
+svg {
+    width: 16px;
+    height: 16px;
+}
+
 /*Colors*/
 
 .blue {
@@ -182,6 +191,11 @@ button {
     margin-left: auto;
 }
 
+.maintenanceList > svg {
+    width: 20px;
+    height: 20px;
+}
+
 a {
     color: var(--white);
     text-decoration: none;
@@ -208,7 +222,7 @@ a:visited {
         display: none;
     }
 
-    .boardRightContent {
+    .rightContent, .boardRightContent {
         display: none;
     }
 }
@@ -290,6 +304,7 @@ a:visited {
     display: flex;
     flex-direction: column;
     margin-right: var(--card-margin);
+    flex-basis: min-content;
 }
 
 .rightContent {
@@ -365,6 +380,7 @@ a:visited {
 }
 
 .cardContent {
+    display: flex;
     margin: 12px;
     text-align: left;
 }
@@ -398,8 +414,9 @@ a:visited {
 }
 
 .boardsListCategory > p {
-    font-weight: 600;
+    font-weight: 700;
     margin: 0.1rem 0 0.1rem 0;
+    font-size: larger;
 }
 
 .boardsListCategory > a > .boardTagSlashed {
@@ -409,6 +426,14 @@ a:visited {
 
 .boardsListCategory > a {
     //margin-left: 0.5rem;
+}
+
+/*Thread of the Day*/
+
+.ToTD {
+    display: flex;
+    flex-direction: row;
+    max-height: 20vh;
 }
 
 /* Board list */
@@ -519,7 +544,10 @@ a:visited {
 }
 
 .postMessage {
-    flex: 1 1 auto;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
 }
 
 .postReplies {
@@ -548,6 +576,9 @@ textarea {
 
 .adminListItem {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .adminListItem:hover {
@@ -584,6 +615,20 @@ textarea {
 
 .boardMgrEditButton:hover {
     color: var(--yellow);
+}
+
+.BoTD {
+    display: flex;
+    flex-direction: column;
+}
+
+.BoTDName {
+    font-weight: 800;
+    font-size: 24px;
+}
+
+#pph-chart {
+    margin-left: auto;
 }
 
 .mTHandler {

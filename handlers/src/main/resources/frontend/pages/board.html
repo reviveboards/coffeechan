@@ -43,56 +43,59 @@
                         <p class="cardName">Board of the day</p>
                     </span>
                 <div class="cardContent">
-                    <p class="cardName">/b/</p>
-                    <p>Posts per hour: 69</p>
-                    <p>Unique Users: 420</p>
-                    <p>Users per hour:</p>
+                    <div class="BoTD">
+                        <p class="BoTDName">/b/</p>
+                        <p>Posts per hour: 69</p>
+                        <p>Unique Users: 420</p>
+                        <p>Users per hour:</p>
+                    </div>
+
                     <canvas id="pph-chart"></canvas>
-                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-gradient"></script>
+<!--                    Script for charts. Too stupid, must be rewritten.-->
+<!--                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
+<!--                    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-gradient"></script>-->
+<!--                    <script>-->
+<!--                        const ctx = document.getElementById('pph-chart');-->
+<!--                        new Chart(ctx, {-->
+<!--                            type: 'bar',-->
+<!--                            data: {-->
+<!--                                labels: ['6h', '5h', '4h', '3h', '2h', '1h'],-->
+<!--                                datasets: [{-->
+<!--                                    label: '',-->
+<!--                                    data: [12, 19, 3, 5, 2, 3],-->
+<!--                                    barThickness: 5,-->
+<!--                                    borderRadius: 5,-->
+<!--                                    borderWidth: 2,-->
+<!--                                    borderColor: 'rgba(122,202,85,1)',-->
+<!--                                    gradient: {-->
+<!--                                        backgroundColor: {-->
+<!--                                            axis: 'y',-->
+<!--                                            colors: {-->
+<!--                                                0: 'rgba(124,124,124,0.33)',-->
+<!--                                                95: 'rgba(122,202,85,1)'-->
+<!--                                            }-->
+<!--                                        }-->
+<!--                                    }-->
+<!--                                }]-->
+<!--                            },-->
+<!--                            options: {-->
+<!--                                plugins: {-->
+<!--                                    legend: {-->
+<!--                                        display: false,-->
+<!--                                    },-->
+<!--                                    scales: {-->
+<!--                                        y: {-->
+<!--                                            beginAtZero: true-->
+<!--                                        }-->
+<!--                                    },-->
 
-                    <script>
-                        const ctx = document.getElementById('pph-chart');
-                        new Chart(ctx, {
-                            type: 'bar',
-                            data: {
-                                labels: ['6h', '5h', '4h', '3h', '2h', '1h'],
-                                datasets: [{
-                                    label: '',
-                                    data: [12, 19, 3, 5, 2, 3],
-                                    barThickness: 9,
-                                    borderRadius: 5,
-                                    borderWidth: 2,
-                                    borderColor: 'rgba(122,202,85,1)',
-                                    gradient: {
-                                        backgroundColor: {
-                                            axis: 'y',
-                                            colors: {
-                                                0: 'rgba(124,124,124,0.33)',
-                                                95: 'rgba(122,202,85,1)'
-                                            }
-                                        }
-                                    }
-                                }]
-                            },
-                            options: {
-                                plugins: {
-                                    legend: {
-                                        display: false,
-                                    },
-                                    scales: {
-                                        y: {
-                                            beginAtZero: true
-                                        }
-                                    },
-
-                                }
-                            },
-                            plugins: [
-                                window['chartjs-plugin-gradient']
-                            ]
-                        });
-                    </script>
+<!--                                }-->
+<!--                            },-->
+<!--                            plugins: [-->
+<!--                                window['chartjs-plugin-gradient']-->
+<!--                            ]-->
+<!--                        });-->
+<!--                    </script>-->
 
 
                 </div>
@@ -171,7 +174,24 @@
                         <p class="cardName">Viewed threads</p>
                     </span>
                 <div class="cardContent">
-                    []
+                    <div class="postCard markedThread">
+                        <div class="postImages mTImg">
+                            <img src="/static/girl.jpg" alt="Post picture">
+                        </div>
+                        <div class="postTextContent mTText">
+                            <div class="mTMenu">
+                                <a class="cardNavigate">on /po/</a>
+                                <a class="closeBtn">[cls]</a>
+                            </div>
+                            <div class="postTitle">
+                                LOREM IPSUM! DOLOR SIT AMET.
+                            </div>
+                            <div class="postMessage">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dignissim libero est, sed commodo tellus luctus a. Quisque volutpat porta mi, sit amet semper lorem tincidunt et. Curabitur est dui, tempor a nulla eu.
+                            </div>
+                        </div>
+                        <div class="red closeBtn"></div>
+                    </div>
                 </div>
             </div>
         </div>

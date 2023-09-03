@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="/static/style.css" rel="stylesheet">
     <link href="/static/themes/basalt.css" id="themeLink" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/@vectopus/atlas-icons/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
           rel="stylesheet">
     <title class="coffeechan#title"></title>
+    <script src="/static/js/feather.min.js"></script>
     <script src="/static/js/jquery-3.6.4.min.js"></script>
 </head>
 <body>
@@ -32,7 +32,7 @@
             <option value="marble">Marble</option>
             <option value="resurrect">Resurrect64</option>
         </select>
-        <a class="settingButton" href="#"><i class="at-gear-bold"></i></a>
+        <a class="settingButton" href="#"><i data-feather="settings"></i></a>
     </div>
 </div>
 <div class="pageContent coffeechan#pageContent">
@@ -74,6 +74,10 @@
     }
 
     initThemes();
+</script>
+<!--Feather icons replace script-->
+<script>
+    feather.replace();
 </script>
 
 <footer>
