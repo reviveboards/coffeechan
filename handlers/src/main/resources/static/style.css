@@ -31,6 +31,7 @@ svg {
     width: 16px;
     height: 16px;
     vertical-align: middle;
+    padding-bottom: 3px;
 }
 
 /*Colors*/
@@ -191,7 +192,7 @@ button {
 }
 
 #settingsCard {
-    width: 45%;
+    width: 25%;
     height: 25%;
 }
 
@@ -226,9 +227,14 @@ button {
     margin-left: auto;
 }
 
-.maintenanceList > svg {
-    width: 20px;
-    height: 20px;
+.boardList svg {
+    width: 18px;
+    height: 18px;
+    padding-bottom: 3px;
+}
+
+#addBoardToList {
+    margin-left: 10px;
 }
 
 a {
@@ -418,6 +424,8 @@ a:visited {
     display: flex;
     margin: 12px;
     text-align: left;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .cardContent > img {
@@ -630,6 +638,7 @@ textarea {
     justify-content: space-between;
     padding: calc(var(--p) / 2);
     margin: calc(var(--card-margin) / 2);
+    border-radius: calc(var(--radius) / 2);
     gap: 2rem;
 }
 
@@ -659,7 +668,8 @@ textarea {
 
 .BoTDName {
     font-weight: 800;
-    font-size: 24px;
+    font-size: 30px;
+    margin-bottom: 43px;
 }
 
 #pph-chart {
