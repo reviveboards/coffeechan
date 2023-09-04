@@ -26,13 +26,8 @@
         <div class="stripBoard">/pol/</div>
     </div>
     <div class="maintenanceList">
-        Theme:
-        <select id="themeSelector">
-            <option value="basalt">Basalt (default)</option>
-            <option value="marble">Marble</option>
-            <option value="resurrect">Resurrect64</option>
-        </select>
-        <a class="settingButton" href="#"><i data-feather="settings"></i></a>
+
+        <a id="settingButton" href="#settings"><i data-feather="settings"></i></a>
     </div>
 </div>
 <div class="pageContent coffeechan#pageContent">
@@ -53,6 +48,36 @@
     <div class="coffeechan#responseMessage">
     </div>
 </div>
+
+
+<footer>
+    <p><span class="coffeechan#currentYear"></span>, reviveboards x nnproject<span
+            class="coffeechan#generationTime"></span></p>
+</footer>
+
+<div class="popup" id="settings">
+    <div class="popup-body">
+        <div class="card" id="settingsCard">
+                <span class="cardHeader">
+                    <span class="green cardBullet"></span>
+                    <p class="cardName">Settings</p>
+                    <a href="#" class="closeBtn">
+                        <i data-feather="x-circle"></i>
+                    </a>
+                </span>
+            <div class="cardContent">
+                Theme:
+                <select id="themeSelector">
+                    <option value="basalt">Basalt (default)</option>
+                    <option value="marble">Marble</option>
+                    <option value="resurrect">Resurrect64</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!--Theme selector script. Needs to move into separate file.-->
 <script>
     function initThemes() {
@@ -65,8 +90,8 @@
         }
 
         themeSelector.addEventListener("change", () => {
-           activateTheme(themeSelector.value);
-           localStorage.setItem("theme", themeSelector.value);
+            activateTheme(themeSelector.value);
+            localStorage.setItem("theme", themeSelector.value);
         });
 
         themeSelector.value = currentTheme;
@@ -80,9 +105,5 @@
     feather.replace();
 </script>
 
-<footer>
-    <p><span class="coffeechan#currentYear"></span>, reviveboards x nnproject<span
-            class="coffeechan#generationTime"></span></p>
-</footer>
 </body>
 </html>

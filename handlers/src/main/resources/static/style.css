@@ -30,6 +30,7 @@ p {
 svg {
     width: 16px;
     height: 16px;
+    vertical-align: middle;
 }
 
 /*Colors*/
@@ -162,6 +163,40 @@ button {
     -webkit-box-shadow: var(--down-shadow);
     -moz-box-shadow: var(--down-shadow);
     box-shadow: var(--down-shadow);
+}
+
+/*Pop-ups, settings*/
+
+.popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.69);
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.popup:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-body {
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#settingsCard {
+    width: 45%;
+    height: 25%;
+}
+
+.closeBtn {
+    margin-left: auto;
 }
 
 /**/
