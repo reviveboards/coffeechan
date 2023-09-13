@@ -10,5 +10,5 @@ public final class DatabaseConfigurationEntry {
     private String hostname = "localhost";
     private String database = "coffeechan";
     private String username = "postgres";
-    private String password = "verystrongpassword";
+    private String password = "postgres";
 }

@@ -32,6 +32,7 @@ public abstract class AbstractComponent<T extends AbstractComponent<T>> {
             element = loaded.clone();
     }
 
+    @SuppressWarnings("unchecked")
     public T cast() {
         return (T) this;
     }
