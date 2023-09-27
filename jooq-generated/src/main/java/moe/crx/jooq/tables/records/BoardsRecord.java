@@ -127,32 +127,32 @@ public class BoardsRecord extends UpdatableRecordImpl<BoardsRecord> implements R
     }
 
     /**
-     * Setter for <code>public.boards.headerImage</code>.
+     * Setter for <code>public.boards.category</code>.
      */
-    public BoardsRecord setHeaderimage(Long value) {
+    public BoardsRecord setCategory(Long value) {
         set(7, value);
         return this;
     }
 
     /**
-     * Getter for <code>public.boards.headerImage</code>.
+     * Getter for <code>public.boards.category</code>.
      */
-    public Long getHeaderimage() {
+    public Long getCategory() {
         return (Long) get(7);
     }
 
     /**
-     * Setter for <code>public.boards.parentCategory</code>.
+     * Setter for <code>public.boards.header</code>.
      */
-    public BoardsRecord setParentcategory(Long value) {
+    public BoardsRecord setHeader(Long value) {
         set(8, value);
         return this;
     }
 
     /**
-     * Getter for <code>public.boards.parentCategory</code>.
+     * Getter for <code>public.boards.header</code>.
      */
-    public Long getParentcategory() {
+    public Long getHeader() {
         return (Long) get(8);
     }
 
@@ -216,12 +216,12 @@ public class BoardsRecord extends UpdatableRecordImpl<BoardsRecord> implements R
 
     @Override
     public Field<Long> field8() {
-        return Boards.BOARDS.HEADERIMAGE;
+        return Boards.BOARDS.CATEGORY;
     }
 
     @Override
     public Field<Long> field9() {
-        return Boards.BOARDS.PARENTCATEGORY;
+        return Boards.BOARDS.HEADER;
     }
 
     @Override
@@ -261,12 +261,12 @@ public class BoardsRecord extends UpdatableRecordImpl<BoardsRecord> implements R
 
     @Override
     public Long component8() {
-        return getHeaderimage();
+        return getCategory();
     }
 
     @Override
     public Long component9() {
-        return getParentcategory();
+        return getHeader();
     }
 
     @Override
@@ -306,12 +306,12 @@ public class BoardsRecord extends UpdatableRecordImpl<BoardsRecord> implements R
 
     @Override
     public Long value8() {
-        return getHeaderimage();
+        return getCategory();
     }
 
     @Override
     public Long value9() {
-        return getParentcategory();
+        return getHeader();
     }
 
     @Override
@@ -358,13 +358,13 @@ public class BoardsRecord extends UpdatableRecordImpl<BoardsRecord> implements R
 
     @Override
     public BoardsRecord value8(Long value) {
-        setHeaderimage(value);
+        setCategory(value);
         return this;
     }
 
     @Override
     public BoardsRecord value9(Long value) {
-        setParentcategory(value);
+        setHeader(value);
         return this;
     }
 
@@ -396,7 +396,7 @@ public class BoardsRecord extends UpdatableRecordImpl<BoardsRecord> implements R
     /**
      * Create a detached, initialised BoardsRecord
      */
-    public BoardsRecord(Long id, String tag, String name, String description, Boolean visible, Boolean locked, Boolean nsfw, Long headerimage, Long parentcategory) {
+    public BoardsRecord(Long id, String tag, String name, String description, Boolean visible, Boolean locked, Boolean nsfw, Long category, Long header) {
         super(Boards.BOARDS);
 
         setId(id);
@@ -406,8 +406,8 @@ public class BoardsRecord extends UpdatableRecordImpl<BoardsRecord> implements R
         setVisible(visible);
         setLocked(locked);
         setNsfw(nsfw);
-        setHeaderimage(headerimage);
-        setParentcategory(parentcategory);
+        setCategory(category);
+        setHeader(header);
     }
 
     /**
@@ -424,8 +424,8 @@ public class BoardsRecord extends UpdatableRecordImpl<BoardsRecord> implements R
             setVisible(value.getVisible());
             setLocked(value.getLocked());
             setNsfw(value.getNsfw());
-            setHeaderimage(value.getHeaderimage());
-            setParentcategory(value.getParentcategory());
+            setCategory(value.getCategory());
+            setHeader(value.getHeader());
         }
     }
 }

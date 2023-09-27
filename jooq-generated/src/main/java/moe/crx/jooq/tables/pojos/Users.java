@@ -19,7 +19,7 @@ public class Users implements Serializable {
     private final String name;
     private final String country;
     private final String ip;
-    private final String passcodehash;
+    private final String hash;
     private final Boolean admin;
 
     public Users(Users value) {
@@ -27,7 +27,7 @@ public class Users implements Serializable {
         this.name = value.name;
         this.country = value.country;
         this.ip = value.ip;
-        this.passcodehash = value.passcodehash;
+        this.hash = value.hash;
         this.admin = value.admin;
     }
 
@@ -36,14 +36,14 @@ public class Users implements Serializable {
         String name,
         String country,
         String ip,
-        String passcodehash,
+        String hash,
         Boolean admin
     ) {
         this.id = id;
         this.name = name;
         this.country = country;
         this.ip = ip;
-        this.passcodehash = passcodehash;
+        this.hash = hash;
         this.admin = admin;
     }
 
@@ -76,10 +76,10 @@ public class Users implements Serializable {
     }
 
     /**
-     * Getter for <code>public.users.passcodehash</code>.
+     * Getter for <code>public.users.hash</code>.
      */
-    public String getPasscodehash() {
-        return this.passcodehash;
+    public String getHash() {
+        return this.hash;
     }
 
     /**
@@ -122,11 +122,11 @@ public class Users implements Serializable {
         }
         else if (!this.ip.equals(other.ip))
             return false;
-        if (this.passcodehash == null) {
-            if (other.passcodehash != null)
+        if (this.hash == null) {
+            if (other.hash != null)
                 return false;
         }
-        else if (!this.passcodehash.equals(other.passcodehash))
+        else if (!this.hash.equals(other.hash))
             return false;
         if (this.admin == null) {
             if (other.admin != null)
@@ -145,7 +145,7 @@ public class Users implements Serializable {
         result = prime * result + ((this.name == null) ? 0 : this.name.hashCode());
         result = prime * result + ((this.country == null) ? 0 : this.country.hashCode());
         result = prime * result + ((this.ip == null) ? 0 : this.ip.hashCode());
-        result = prime * result + ((this.passcodehash == null) ? 0 : this.passcodehash.hashCode());
+        result = prime * result + ((this.hash == null) ? 0 : this.hash.hashCode());
         result = prime * result + ((this.admin == null) ? 0 : this.admin.hashCode());
         return result;
     }
@@ -158,7 +158,7 @@ public class Users implements Serializable {
         sb.append(", ").append(name);
         sb.append(", ").append(country);
         sb.append(", ").append(ip);
-        sb.append(", ").append(passcodehash);
+        sb.append(", ").append(hash);
         sb.append(", ").append(admin);
 
         sb.append(")");

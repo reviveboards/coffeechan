@@ -18,26 +18,26 @@ public class Categories implements Serializable {
 
     private final Long id;
     private final String name;
-    private final Long[] boards;
     private final Boolean visible;
+    private final Long[] boards;
 
     public Categories(Categories value) {
         this.id = value.id;
         this.name = value.name;
-        this.boards = value.boards;
         this.visible = value.visible;
+        this.boards = value.boards;
     }
 
     public Categories(
         Long id,
         String name,
-        Long[] boards,
-        Boolean visible
+        Boolean visible,
+        Long[] boards
     ) {
         this.id = id;
         this.name = name;
-        this.boards = boards;
         this.visible = visible;
+        this.boards = boards;
     }
 
     /**
@@ -55,17 +55,17 @@ public class Categories implements Serializable {
     }
 
     /**
-     * Getter for <code>public.categories.boards</code>.
-     */
-    public Long[] getBoards() {
-        return this.boards;
-    }
-
-    /**
      * Getter for <code>public.categories.visible</code>.
      */
     public Boolean getVisible() {
         return this.visible;
+    }
+
+    /**
+     * Getter for <code>public.categories.boards</code>.
+     */
+    public Long[] getBoards() {
+        return this.boards;
     }
 
     @Override
@@ -89,17 +89,17 @@ public class Categories implements Serializable {
         }
         else if (!this.name.equals(other.name))
             return false;
-        if (this.boards == null) {
-            if (other.boards != null)
-                return false;
-        }
-        else if (!Arrays.equals(this.boards, other.boards))
-            return false;
         if (this.visible == null) {
             if (other.visible != null)
                 return false;
         }
         else if (!this.visible.equals(other.visible))
+            return false;
+        if (this.boards == null) {
+            if (other.boards != null)
+                return false;
+        }
+        else if (!Arrays.equals(this.boards, other.boards))
             return false;
         return true;
     }
@@ -110,8 +110,8 @@ public class Categories implements Serializable {
         int result = 1;
         result = prime * result + ((this.id == null) ? 0 : this.id.hashCode());
         result = prime * result + ((this.name == null) ? 0 : this.name.hashCode());
-        result = prime * result + ((this.boards == null) ? 0 : Arrays.hashCode(this.boards));
         result = prime * result + ((this.visible == null) ? 0 : this.visible.hashCode());
+        result = prime * result + ((this.boards == null) ? 0 : Arrays.hashCode(this.boards));
         return result;
     }
 
@@ -121,8 +121,8 @@ public class Categories implements Serializable {
 
         sb.append(id);
         sb.append(", ").append(name);
-        sb.append(", ").append(Arrays.toString(boards));
         sb.append(", ").append(visible);
+        sb.append(", ").append(Arrays.toString(boards));
 
         sb.append(")");
         return sb.toString();

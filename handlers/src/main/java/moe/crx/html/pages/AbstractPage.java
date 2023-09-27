@@ -39,6 +39,14 @@ public abstract class AbstractPage<T extends AbstractPage<T>> extends AbstractCo
     }
 
     public @NotNull T consumeResponse(@Nullable Object response) {
+        if (response == null || response instanceof APIError) {
+            return consumeError(response);
+        }
+
+        return consumeResponse(new ResponseMessage(ResponseMessage.ResponseType.MESSAGE));
+    }
+
+    public @NotNull T consumeError(@Nullable Object response) {
         if (response == null) {
             return consumeResponse(new ResponseMessage(ResponseMessage.ResponseType.ERROR));
         }
@@ -48,7 +56,7 @@ public abstract class AbstractPage<T extends AbstractPage<T>> extends AbstractCo
                     error.getErrorCode() + ": " + error.getErrorMessage()));
         }
 
-        return consumeResponse(new ResponseMessage(ResponseMessage.ResponseType.MESSAGE));
+        return cast();
     }
 
     public @NotNull T consumeResponse(@NotNull ResponseMessage message) {

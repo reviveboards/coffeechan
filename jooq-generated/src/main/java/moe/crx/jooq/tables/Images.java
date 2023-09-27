@@ -61,9 +61,9 @@ public class Images extends TableImpl<ImagesRecord> {
     public final TableField<ImagesRecord, String> URL = createField(DSL.name("url"), SQLDataType.VARCHAR.nullable(false), this, "");
 
     /**
-     * The column <code>public.images.squaredurl</code>.
+     * The column <code>public.images.squared</code>.
      */
-    public final TableField<ImagesRecord, String> SQUAREDURL = createField(DSL.name("squaredurl"), SQLDataType.VARCHAR.nullable(false), this, "");
+    public final TableField<ImagesRecord, String> SQUARED = createField(DSL.name("squared"), SQLDataType.VARCHAR.nullable(false), this, "");
 
     /**
      * The column <code>public.images.filename</code>.

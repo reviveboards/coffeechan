@@ -62,19 +62,19 @@ public class Posts extends TableImpl<PostsRecord> {
     public final TableField<PostsRecord, Long> POSTER = createField(DSL.name("poster"), SQLDataType.BIGINT.nullable(false), this, "");
 
     /**
-     * The column <code>public.posts.parentboard</code>.
+     * The column <code>public.posts.board</code>.
      */
-    public final TableField<PostsRecord, Long> PARENTBOARD = createField(DSL.name("parentboard"), SQLDataType.BIGINT.nullable(false), this, "");
+    public final TableField<PostsRecord, Long> BOARD = createField(DSL.name("board"), SQLDataType.BIGINT.nullable(false), this, "");
 
     /**
-     * The column <code>public.posts.parentpost</code>.
+     * The column <code>public.posts.parent</code>.
      */
-    public final TableField<PostsRecord, Long> PARENTPOST = createField(DSL.name("parentpost"), SQLDataType.BIGINT.nullable(false), this, "");
+    public final TableField<PostsRecord, Long> PARENT = createField(DSL.name("parent"), SQLDataType.BIGINT, this, "");
 
     /**
-     * The column <code>public.posts.creationdate</code>.
+     * The column <code>public.posts.creationtime</code>.
      */
-    public final TableField<PostsRecord, LocalDateTime> CREATIONDATE = createField(DSL.name("creationdate"), SQLDataType.LOCALDATETIME(6).nullable(false), this, "");
+    public final TableField<PostsRecord, LocalDateTime> CREATIONTIME = createField(DSL.name("creationtime"), SQLDataType.LOCALDATETIME(6).nullable(false), this, "");
 
     /**
      * The column <code>public.posts.title</code>.

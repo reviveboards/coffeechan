@@ -16,8 +16,8 @@ public final class Board {
     private boolean visible;
     private boolean locked;
     private boolean nsfw;
-    private long headerImage;
-    private long parentCategory;
+    private long header;
+    private long category;
 
     @JsonIgnore
     public String getTagSlashed() {

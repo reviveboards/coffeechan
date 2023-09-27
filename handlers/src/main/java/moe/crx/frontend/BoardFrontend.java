@@ -16,6 +16,8 @@ import moe.crx.core.Configuration;
 import moe.crx.html.pages.MessagePage;
 import org.jetbrains.annotations.NotNull;
 
+import static jakarta.ws.rs.core.MediaType.TEXT_HTML;
+
 @Path("/{boardTag}")
 @Singleton
 public final class BoardFrontend implements Feature {
@@ -39,7 +41,7 @@ public final class BoardFrontend implements Feature {
     }
 
     @GET
-    @Produces(MediaType.TEXT_HTML)
+    @Produces(TEXT_HTML)
     public String board(@PathParam("boardTag") String boardTag) {
         var response = boardsApi.getBoardByTag(boardTag);
 
@@ -55,8 +57,30 @@ public final class BoardFrontend implements Feature {
     }
 
     @GET
+    @Path("/post")
+    @Produces(TEXT_HTML)
+    public String postMessage(@PathParam("boardTag") String boardTag,
+                              @QueryParam("postTitle") String postTitle,
+                              @QueryParam("postText") String postText) {
+        var response = boardsApi.getBoardByTag(boardTag);
+
+        if (!(response instanceof Board board)) {
+            return new MessagePage(config)
+                    .consumeResponse(response)
+                    .html();
+        }
+
+        var postResponse = postsApi.postMessage(0, boardTag, 0, postTitle, postText);
+
+        return new BoardPage(config)
+                .consumeBoard(board, postsApi)
+                .consumeResponse(postResponse)
+                .html();
+    }
+
+    @GET
     @Path("/{threadId}")
-    @Produces(MediaType.TEXT_HTML)
+    @Produces(TEXT_HTML)
     public String thread(@PathParam("threadId") long threadId) {
         return new BoardPage(config)
                 .html();

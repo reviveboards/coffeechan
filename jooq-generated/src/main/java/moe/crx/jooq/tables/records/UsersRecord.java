@@ -82,17 +82,17 @@ public class UsersRecord extends UpdatableRecordImpl<UsersRecord> implements Rec
     }
 
     /**
-     * Setter for <code>public.users.passcodehash</code>.
+     * Setter for <code>public.users.hash</code>.
      */
-    public UsersRecord setPasscodehash(String value) {
+    public UsersRecord setHash(String value) {
         set(4, value);
         return this;
     }
 
     /**
-     * Getter for <code>public.users.passcodehash</code>.
+     * Getter for <code>public.users.hash</code>.
      */
-    public String getPasscodehash() {
+    public String getHash() {
         return (String) get(4);
     }
 
@@ -156,7 +156,7 @@ public class UsersRecord extends UpdatableRecordImpl<UsersRecord> implements Rec
 
     @Override
     public Field<String> field5() {
-        return Users.USERS.PASSCODEHASH;
+        return Users.USERS.HASH;
     }
 
     @Override
@@ -186,7 +186,7 @@ public class UsersRecord extends UpdatableRecordImpl<UsersRecord> implements Rec
 
     @Override
     public String component5() {
-        return getPasscodehash();
+        return getHash();
     }
 
     @Override
@@ -216,7 +216,7 @@ public class UsersRecord extends UpdatableRecordImpl<UsersRecord> implements Rec
 
     @Override
     public String value5() {
-        return getPasscodehash();
+        return getHash();
     }
 
     @Override
@@ -250,7 +250,7 @@ public class UsersRecord extends UpdatableRecordImpl<UsersRecord> implements Rec
 
     @Override
     public UsersRecord value5(String value) {
-        setPasscodehash(value);
+        setHash(value);
         return this;
     }
 
@@ -285,14 +285,14 @@ public class UsersRecord extends UpdatableRecordImpl<UsersRecord> implements Rec
     /**
      * Create a detached, initialised UsersRecord
      */
-    public UsersRecord(Long id, String name, String country, String ip, String passcodehash, Boolean admin) {
+    public UsersRecord(Long id, String name, String country, String ip, String hash, Boolean admin) {
         super(Users.USERS);
 
         setId(id);
         setName(name);
         setCountry(country);
         setIp(ip);
-        setPasscodehash(passcodehash);
+        setHash(hash);
         setAdmin(admin);
     }
 
@@ -307,7 +307,7 @@ public class UsersRecord extends UpdatableRecordImpl<UsersRecord> implements Rec
             setName(value.getName());
             setCountry(value.getCountry());
             setIp(value.getIp());
-            setPasscodehash(value.getPasscodehash());
+            setHash(value.getHash());
             setAdmin(value.getAdmin());
         }
     }

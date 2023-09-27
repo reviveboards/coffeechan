@@ -52,17 +52,17 @@ public class ImagesRecord extends UpdatableRecordImpl<ImagesRecord> implements R
     }
 
     /**
-     * Setter for <code>public.images.squaredurl</code>.
+     * Setter for <code>public.images.squared</code>.
      */
-    public ImagesRecord setSquaredurl(String value) {
+    public ImagesRecord setSquared(String value) {
         set(2, value);
         return this;
     }
 
     /**
-     * Getter for <code>public.images.squaredurl</code>.
+     * Getter for <code>public.images.squared</code>.
      */
-    public String getSquaredurl() {
+    public String getSquared() {
         return (String) get(2);
     }
 
@@ -176,7 +176,7 @@ public class ImagesRecord extends UpdatableRecordImpl<ImagesRecord> implements R
 
     @Override
     public Field<String> field3() {
-        return Images.IMAGES.SQUAREDURL;
+        return Images.IMAGES.SQUARED;
     }
 
     @Override
@@ -216,7 +216,7 @@ public class ImagesRecord extends UpdatableRecordImpl<ImagesRecord> implements R
 
     @Override
     public String component3() {
-        return getSquaredurl();
+        return getSquared();
     }
 
     @Override
@@ -256,7 +256,7 @@ public class ImagesRecord extends UpdatableRecordImpl<ImagesRecord> implements R
 
     @Override
     public String value3() {
-        return getSquaredurl();
+        return getSquared();
     }
 
     @Override
@@ -298,7 +298,7 @@ public class ImagesRecord extends UpdatableRecordImpl<ImagesRecord> implements R
 
     @Override
     public ImagesRecord value3(String value) {
-        setSquaredurl(value);
+        setSquared(value);
         return this;
     }
 
@@ -359,12 +359,12 @@ public class ImagesRecord extends UpdatableRecordImpl<ImagesRecord> implements R
     /**
      * Create a detached, initialised ImagesRecord
      */
-    public ImagesRecord(Long id, String url, String squaredurl, String filename, Integer width, Integer height, Long filesize, String alt) {
+    public ImagesRecord(Long id, String url, String squared, String filename, Integer width, Integer height, Long filesize, String alt) {
         super(Images.IMAGES);
 
         setId(id);
         setUrl(url);
-        setSquaredurl(squaredurl);
+        setSquared(squared);
         setFilename(filename);
         setWidth(width);
         setHeight(height);
@@ -381,7 +381,7 @@ public class ImagesRecord extends UpdatableRecordImpl<ImagesRecord> implements R
         if (value != null) {
             setId(value.getId());
             setUrl(value.getUrl());
-            setSquaredurl(value.getSquaredurl());
+            setSquared(value.getSquared());
             setFilename(value.getFilename());
             setWidth(value.getWidth());
             setHeight(value.getHeight());
