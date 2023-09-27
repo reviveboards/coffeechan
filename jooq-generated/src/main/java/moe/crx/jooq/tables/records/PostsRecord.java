@@ -54,47 +54,47 @@ public class PostsRecord extends UpdatableRecordImpl<PostsRecord> implements Rec
     }
 
     /**
-     * Setter for <code>public.posts.parentboard</code>.
+     * Setter for <code>public.posts.board</code>.
      */
-    public PostsRecord setParentboard(Long value) {
+    public PostsRecord setBoard(Long value) {
         set(2, value);
         return this;
     }
 
     /**
-     * Getter for <code>public.posts.parentboard</code>.
+     * Getter for <code>public.posts.board</code>.
      */
-    public Long getParentboard() {
+    public Long getBoard() {
         return (Long) get(2);
     }
 
     /**
-     * Setter for <code>public.posts.parentpost</code>.
+     * Setter for <code>public.posts.parent</code>.
      */
-    public PostsRecord setParentpost(Long value) {
+    public PostsRecord setParent(Long value) {
         set(3, value);
         return this;
     }
 
     /**
-     * Getter for <code>public.posts.parentpost</code>.
+     * Getter for <code>public.posts.parent</code>.
      */
-    public Long getParentpost() {
+    public Long getParent() {
         return (Long) get(3);
     }
 
     /**
-     * Setter for <code>public.posts.creationdate</code>.
+     * Setter for <code>public.posts.creationtime</code>.
      */
-    public PostsRecord setCreationdate(LocalDateTime value) {
+    public PostsRecord setCreationtime(LocalDateTime value) {
         set(4, value);
         return this;
     }
 
     /**
-     * Getter for <code>public.posts.creationdate</code>.
+     * Getter for <code>public.posts.creationtime</code>.
      */
-    public LocalDateTime getCreationdate() {
+    public LocalDateTime getCreationtime() {
         return (LocalDateTime) get(4);
     }
 
@@ -208,17 +208,17 @@ public class PostsRecord extends UpdatableRecordImpl<PostsRecord> implements Rec
 
     @Override
     public Field<Long> field3() {
-        return Posts.POSTS.PARENTBOARD;
+        return Posts.POSTS.BOARD;
     }
 
     @Override
     public Field<Long> field4() {
-        return Posts.POSTS.PARENTPOST;
+        return Posts.POSTS.PARENT;
     }
 
     @Override
     public Field<LocalDateTime> field5() {
-        return Posts.POSTS.CREATIONDATE;
+        return Posts.POSTS.CREATIONTIME;
     }
 
     @Override
@@ -258,17 +258,17 @@ public class PostsRecord extends UpdatableRecordImpl<PostsRecord> implements Rec
 
     @Override
     public Long component3() {
-        return getParentboard();
+        return getBoard();
     }
 
     @Override
     public Long component4() {
-        return getParentpost();
+        return getParent();
     }
 
     @Override
     public LocalDateTime component5() {
-        return getCreationdate();
+        return getCreationtime();
     }
 
     @Override
@@ -308,17 +308,17 @@ public class PostsRecord extends UpdatableRecordImpl<PostsRecord> implements Rec
 
     @Override
     public Long value3() {
-        return getParentboard();
+        return getBoard();
     }
 
     @Override
     public Long value4() {
-        return getParentpost();
+        return getParent();
     }
 
     @Override
     public LocalDateTime value5() {
-        return getCreationdate();
+        return getCreationtime();
     }
 
     @Override
@@ -360,19 +360,19 @@ public class PostsRecord extends UpdatableRecordImpl<PostsRecord> implements Rec
 
     @Override
     public PostsRecord value3(Long value) {
-        setParentboard(value);
+        setBoard(value);
         return this;
     }
 
     @Override
     public PostsRecord value4(Long value) {
-        setParentpost(value);
+        setParent(value);
         return this;
     }
 
     @Override
     public PostsRecord value5(LocalDateTime value) {
-        setCreationdate(value);
+        setCreationtime(value);
         return this;
     }
 
@@ -435,14 +435,14 @@ public class PostsRecord extends UpdatableRecordImpl<PostsRecord> implements Rec
     /**
      * Create a detached, initialised PostsRecord
      */
-    public PostsRecord(Long id, Long poster, Long parentboard, Long parentpost, LocalDateTime creationdate, String title, String message, Boolean locked, Boolean visible, Long[] images) {
+    public PostsRecord(Long id, Long poster, Long board, Long parent, LocalDateTime creationtime, String title, String message, Boolean locked, Boolean visible, Long[] images) {
         super(Posts.POSTS);
 
         setId(id);
         setPoster(poster);
-        setParentboard(parentboard);
-        setParentpost(parentpost);
-        setCreationdate(creationdate);
+        setBoard(board);
+        setParent(parent);
+        setCreationtime(creationtime);
         setTitle(title);
         setMessage(message);
         setLocked(locked);
@@ -459,9 +459,9 @@ public class PostsRecord extends UpdatableRecordImpl<PostsRecord> implements Rec
         if (value != null) {
             setId(value.getId());
             setPoster(value.getPoster());
-            setParentboard(value.getParentboard());
-            setParentpost(value.getParentpost());
-            setCreationdate(value.getCreationdate());
+            setBoard(value.getBoard());
+            setParent(value.getParent());
+            setCreationtime(value.getCreationtime());
             setTitle(value.getTitle());
             setMessage(value.getMessage());
             setLocked(value.getLocked());

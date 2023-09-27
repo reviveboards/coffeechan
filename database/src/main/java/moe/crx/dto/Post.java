@@ -13,9 +13,9 @@ import java.util.List;
 public final class Post {
     private long id;
     private long poster;
-    private long parentBoard;
-    private long parentPost;
-    private Date creationDate = new Date();
+    private long board;
+    private long parent;
+    private Date creationtime = new Date();
     private String title;
     private String message;
     private boolean locked;

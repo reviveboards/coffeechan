@@ -11,6 +11,7 @@ import moe.crx.dto.Board;
 import org.jetbrains.annotations.NotNull;
 import org.jooq.exception.DataAccessException;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Singleton
@@ -20,6 +21,8 @@ public final class BoardsApi implements Feature {
     private final BoardDao boardDao;
     private final CategoryDao categoryDao;
 
+    public static final List<String> RESERVED_NAMES = Arrays.asList("admin");
+
     @Inject
     public BoardsApi(@NotNull BoardDao boardDao,
                      @NotNull CategoryDao categoryDao) {
@@ -28,12 +31,12 @@ public final class BoardsApi implements Feature {
     }
 
     @Path("/create")
-    @POST
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Object create(@FormParam("name") String name,
-                         @FormParam("tag") String tag,
-                         @FormParam("parentCategory") long parentCategory,
-                         @FormParam("description") String description) {
+    public Object create(@QueryParam("name") String name,
+                         @QueryParam("tag") String tag,
+                         @QueryParam("parentCategory") long parentCategory,
+                         @QueryParam("description") String description) {
         try {
             var category = categoryDao.read(parentCategory);
 
@@ -41,10 +44,14 @@ public final class BoardsApi implements Feature {
                 return new APIError(0, "No such category");
             }
 
+            if (RESERVED_NAMES.contains(tag)) {
+                return new APIError(1, "Specified tag is reserved");
+            }
+
             var board = new Board();
             board.setName(name);
             board.setTag(tag);
-            board.setParentCategory(parentCategory);
+            board.setCategory(parentCategory);
             board.setDescription(description);
             board.setVisible(true);
 

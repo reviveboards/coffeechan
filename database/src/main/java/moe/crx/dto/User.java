@@ -12,6 +12,6 @@ public final class User {
     private String name;
     private String country;
     private String ip;
-    private String passcodeHash;
+    private String hash;
     private boolean admin;
 }

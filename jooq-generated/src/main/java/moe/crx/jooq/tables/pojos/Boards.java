@@ -22,8 +22,8 @@ public class Boards implements Serializable {
     private final Boolean visible;
     private final Boolean locked;
     private final Boolean nsfw;
-    private final Long headerimage;
-    private final Long parentcategory;
+    private final Long category;
+    private final Long header;
 
     public Boards(Boards value) {
         this.id = value.id;
@@ -33,8 +33,8 @@ public class Boards implements Serializable {
         this.visible = value.visible;
         this.locked = value.locked;
         this.nsfw = value.nsfw;
-        this.headerimage = value.headerimage;
-        this.parentcategory = value.parentcategory;
+        this.category = value.category;
+        this.header = value.header;
     }
 
     public Boards(
@@ -45,8 +45,8 @@ public class Boards implements Serializable {
         Boolean visible,
         Boolean locked,
         Boolean nsfw,
-        Long headerimage,
-        Long parentcategory
+        Long category,
+        Long header
     ) {
         this.id = id;
         this.tag = tag;
@@ -55,8 +55,8 @@ public class Boards implements Serializable {
         this.visible = visible;
         this.locked = locked;
         this.nsfw = nsfw;
-        this.headerimage = headerimage;
-        this.parentcategory = parentcategory;
+        this.category = category;
+        this.header = header;
     }
 
     /**
@@ -109,17 +109,17 @@ public class Boards implements Serializable {
     }
 
     /**
-     * Getter for <code>public.boards.headerImage</code>.
+     * Getter for <code>public.boards.category</code>.
      */
-    public Long getHeaderimage() {
-        return this.headerimage;
+    public Long getCategory() {
+        return this.category;
     }
 
     /**
-     * Getter for <code>public.boards.parentCategory</code>.
+     * Getter for <code>public.boards.header</code>.
      */
-    public Long getParentcategory() {
-        return this.parentcategory;
+    public Long getHeader() {
+        return this.header;
     }
 
     @Override
@@ -173,17 +173,17 @@ public class Boards implements Serializable {
         }
         else if (!this.nsfw.equals(other.nsfw))
             return false;
-        if (this.headerimage == null) {
-            if (other.headerimage != null)
+        if (this.category == null) {
+            if (other.category != null)
                 return false;
         }
-        else if (!this.headerimage.equals(other.headerimage))
+        else if (!this.category.equals(other.category))
             return false;
-        if (this.parentcategory == null) {
-            if (other.parentcategory != null)
+        if (this.header == null) {
+            if (other.header != null)
                 return false;
         }
-        else if (!this.parentcategory.equals(other.parentcategory))
+        else if (!this.header.equals(other.header))
             return false;
         return true;
     }
@@ -199,8 +199,8 @@ public class Boards implements Serializable {
         result = prime * result + ((this.visible == null) ? 0 : this.visible.hashCode());
         result = prime * result + ((this.locked == null) ? 0 : this.locked.hashCode());
         result = prime * result + ((this.nsfw == null) ? 0 : this.nsfw.hashCode());
-        result = prime * result + ((this.headerimage == null) ? 0 : this.headerimage.hashCode());
-        result = prime * result + ((this.parentcategory == null) ? 0 : this.parentcategory.hashCode());
+        result = prime * result + ((this.category == null) ? 0 : this.category.hashCode());
+        result = prime * result + ((this.header == null) ? 0 : this.header.hashCode());
         return result;
     }
 
@@ -215,8 +215,8 @@ public class Boards implements Serializable {
         sb.append(", ").append(visible);
         sb.append(", ").append(locked);
         sb.append(", ").append(nsfw);
-        sb.append(", ").append(headerimage);
-        sb.append(", ").append(parentcategory);
+        sb.append(", ").append(category);
+        sb.append(", ").append(header);
 
         sb.append(")");
         return sb.toString();

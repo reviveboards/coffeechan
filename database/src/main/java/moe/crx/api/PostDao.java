@@ -20,7 +20,7 @@ final class PostDao extends AbstractDao<Post, PostsRecord, Long> {
     public List<Post> getThreads(long boardId) {
         try (var c = getConnection()) {
             return c.context()
-                    .fetch(POSTS, POSTS.PARENTBOARD.eq(boardId).and(POSTS.PARENTPOST.eq(0L)))
+                    .fetch(POSTS, POSTS.BOARD.eq(boardId).and(POSTS.PARENT.eq(0L)))
                     .map(r -> r.into(Post.class));
         }
     }

@@ -19,9 +19,9 @@ public class Posts implements Serializable {
 
     private final Long id;
     private final Long poster;
-    private final Long parentboard;
-    private final Long parentpost;
-    private final LocalDateTime creationdate;
+    private final Long board;
+    private final Long parent;
+    private final LocalDateTime creationtime;
     private final String title;
     private final String message;
     private final Boolean locked;
@@ -31,9 +31,9 @@ public class Posts implements Serializable {
     public Posts(Posts value) {
         this.id = value.id;
         this.poster = value.poster;
-        this.parentboard = value.parentboard;
-        this.parentpost = value.parentpost;
-        this.creationdate = value.creationdate;
+        this.board = value.board;
+        this.parent = value.parent;
+        this.creationtime = value.creationtime;
         this.title = value.title;
         this.message = value.message;
         this.locked = value.locked;
@@ -44,9 +44,9 @@ public class Posts implements Serializable {
     public Posts(
         Long id,
         Long poster,
-        Long parentboard,
-        Long parentpost,
-        LocalDateTime creationdate,
+        Long board,
+        Long parent,
+        LocalDateTime creationtime,
         String title,
         String message,
         Boolean locked,
@@ -55,9 +55,9 @@ public class Posts implements Serializable {
     ) {
         this.id = id;
         this.poster = poster;
-        this.parentboard = parentboard;
-        this.parentpost = parentpost;
-        this.creationdate = creationdate;
+        this.board = board;
+        this.parent = parent;
+        this.creationtime = creationtime;
         this.title = title;
         this.message = message;
         this.locked = locked;
@@ -80,24 +80,24 @@ public class Posts implements Serializable {
     }
 
     /**
-     * Getter for <code>public.posts.parentboard</code>.
+     * Getter for <code>public.posts.board</code>.
      */
-    public Long getParentboard() {
-        return this.parentboard;
+    public Long getBoard() {
+        return this.board;
     }
 
     /**
-     * Getter for <code>public.posts.parentpost</code>.
+     * Getter for <code>public.posts.parent</code>.
      */
-    public Long getParentpost() {
-        return this.parentpost;
+    public Long getParent() {
+        return this.parent;
     }
 
     /**
-     * Getter for <code>public.posts.creationdate</code>.
+     * Getter for <code>public.posts.creationtime</code>.
      */
-    public LocalDateTime getCreationdate() {
-        return this.creationdate;
+    public LocalDateTime getCreationtime() {
+        return this.creationtime;
     }
 
     /**
@@ -156,23 +156,23 @@ public class Posts implements Serializable {
         }
         else if (!this.poster.equals(other.poster))
             return false;
-        if (this.parentboard == null) {
-            if (other.parentboard != null)
+        if (this.board == null) {
+            if (other.board != null)
                 return false;
         }
-        else if (!this.parentboard.equals(other.parentboard))
+        else if (!this.board.equals(other.board))
             return false;
-        if (this.parentpost == null) {
-            if (other.parentpost != null)
+        if (this.parent == null) {
+            if (other.parent != null)
                 return false;
         }
-        else if (!this.parentpost.equals(other.parentpost))
+        else if (!this.parent.equals(other.parent))
             return false;
-        if (this.creationdate == null) {
-            if (other.creationdate != null)
+        if (this.creationtime == null) {
+            if (other.creationtime != null)
                 return false;
         }
-        else if (!this.creationdate.equals(other.creationdate))
+        else if (!this.creationtime.equals(other.creationtime))
             return false;
         if (this.title == null) {
             if (other.title != null)
@@ -213,9 +213,9 @@ public class Posts implements Serializable {
         int result = 1;
         result = prime * result + ((this.id == null) ? 0 : this.id.hashCode());
         result = prime * result + ((this.poster == null) ? 0 : this.poster.hashCode());
-        result = prime * result + ((this.parentboard == null) ? 0 : this.parentboard.hashCode());
-        result = prime * result + ((this.parentpost == null) ? 0 : this.parentpost.hashCode());
-        result = prime * result + ((this.creationdate == null) ? 0 : this.creationdate.hashCode());
+        result = prime * result + ((this.board == null) ? 0 : this.board.hashCode());
+        result = prime * result + ((this.parent == null) ? 0 : this.parent.hashCode());
+        result = prime * result + ((this.creationtime == null) ? 0 : this.creationtime.hashCode());
         result = prime * result + ((this.title == null) ? 0 : this.title.hashCode());
         result = prime * result + ((this.message == null) ? 0 : this.message.hashCode());
         result = prime * result + ((this.locked == null) ? 0 : this.locked.hashCode());
@@ -230,9 +230,9 @@ public class Posts implements Serializable {
 
         sb.append(id);
         sb.append(", ").append(poster);
-        sb.append(", ").append(parentboard);
-        sb.append(", ").append(parentpost);
-        sb.append(", ").append(creationdate);
+        sb.append(", ").append(board);
+        sb.append(", ").append(parent);
+        sb.append(", ").append(creationtime);
         sb.append(", ").append(title);
         sb.append(", ").append(message);
         sb.append(", ").append(locked);

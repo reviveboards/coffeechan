@@ -61,14 +61,14 @@ public class Categories extends TableImpl<CategoriesRecord> {
     public final TableField<CategoriesRecord, String> NAME = createField(DSL.name("name"), SQLDataType.VARCHAR, this, "");
 
     /**
+     * The column <code>public.categories.visible</code>.
+     */
+    public final TableField<CategoriesRecord, Boolean> VISIBLE = createField(DSL.name("visible"), SQLDataType.BOOLEAN.nullable(false).defaultValue(DSL.field("true", SQLDataType.BOOLEAN)), this, "");
+
+    /**
      * The column <code>public.categories.boards</code>.
      */
     public final TableField<CategoriesRecord, Long[]> BOARDS = createField(DSL.name("boards"), SQLDataType.BIGINT.getArrayDataType(), this, "");
-
-    /**
-     * The column <code>public.categories.visible</code>.
-     */
-    public final TableField<CategoriesRecord, Boolean> VISIBLE = createField(DSL.name("visible"), SQLDataType.BOOLEAN.nullable(false).defaultValue(DSL.field("false", SQLDataType.BOOLEAN)), this, "");
 
     private Categories(Name alias, Table<CategoriesRecord> aliased) {
         this(alias, aliased, null);
@@ -162,14 +162,14 @@ public class Categories extends TableImpl<CategoriesRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row4<Long, String, Long[], Boolean> fieldsRow() {
+    public Row4<Long, String, Boolean, Long[]> fieldsRow() {
         return (Row4) super.fieldsRow();
     }
 
     /**
      * Convenience mapping calling {@link SelectField#convertFrom(Function)}.
      */
-    public <U> SelectField<U> mapping(Function4<? super Long, ? super String, ? super Long[], ? super Boolean, ? extends U> from) {
+    public <U> SelectField<U> mapping(Function4<? super Long, ? super String, ? super Boolean, ? super Long[], ? extends U> from) {
         return convertFrom(Records.mapping(from));
     }
 
@@ -177,7 +177,7 @@ public class Categories extends TableImpl<CategoriesRecord> {
      * Convenience mapping calling {@link SelectField#convertFrom(Class,
      * Function)}.
      */
-    public <U> SelectField<U> mapping(Class<U> toType, Function4<? super Long, ? super String, ? super Long[], ? super Boolean, ? extends U> from) {
+    public <U> SelectField<U> mapping(Class<U> toType, Function4<? super Long, ? super String, ? super Boolean, ? super Long[], ? extends U> from) {
         return convertFrom(toType, Records.mapping(from));
     }
 }

@@ -75,7 +75,7 @@ public class Boards extends TableImpl<BoardsRecord> {
     /**
      * The column <code>public.boards.visible</code>.
      */
-    public final TableField<BoardsRecord, Boolean> VISIBLE = createField(DSL.name("visible"), SQLDataType.BOOLEAN.nullable(false).defaultValue(DSL.field("false", SQLDataType.BOOLEAN)), this, "");
+    public final TableField<BoardsRecord, Boolean> VISIBLE = createField(DSL.name("visible"), SQLDataType.BOOLEAN.nullable(false).defaultValue(DSL.field("true", SQLDataType.BOOLEAN)), this, "");
 
     /**
      * The column <code>public.boards.locked</code>.
@@ -88,14 +88,14 @@ public class Boards extends TableImpl<BoardsRecord> {
     public final TableField<BoardsRecord, Boolean> NSFW = createField(DSL.name("nsfw"), SQLDataType.BOOLEAN.nullable(false).defaultValue(DSL.field("false", SQLDataType.BOOLEAN)), this, "");
 
     /**
-     * The column <code>public.boards.headerImage</code>.
+     * The column <code>public.boards.category</code>.
      */
-    public final TableField<BoardsRecord, Long> HEADERIMAGE = createField(DSL.name("headerImage"), SQLDataType.BIGINT.nullable(false).defaultValue(DSL.field("0", SQLDataType.BIGINT)), this, "");
+    public final TableField<BoardsRecord, Long> CATEGORY = createField(DSL.name("category"), SQLDataType.BIGINT.nullable(false), this, "");
 
     /**
-     * The column <code>public.boards.parentCategory</code>.
+     * The column <code>public.boards.header</code>.
      */
-    public final TableField<BoardsRecord, Long> PARENTCATEGORY = createField(DSL.name("parentCategory"), SQLDataType.BIGINT.nullable(false).defaultValue(DSL.field("0", SQLDataType.BIGINT)), this, "");
+    public final TableField<BoardsRecord, Long> HEADER = createField(DSL.name("header"), SQLDataType.BIGINT, this, "");
 
     private Boards(Name alias, Table<BoardsRecord> aliased) {
         this(alias, aliased, null);

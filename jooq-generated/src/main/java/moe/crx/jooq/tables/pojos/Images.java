@@ -17,7 +17,7 @@ public class Images implements Serializable {
 
     private final Long id;
     private final String url;
-    private final String squaredurl;
+    private final String squared;
     private final String filename;
     private final Integer width;
     private final Integer height;
@@ -27,7 +27,7 @@ public class Images implements Serializable {
     public Images(Images value) {
         this.id = value.id;
         this.url = value.url;
-        this.squaredurl = value.squaredurl;
+        this.squared = value.squared;
         this.filename = value.filename;
         this.width = value.width;
         this.height = value.height;
@@ -38,7 +38,7 @@ public class Images implements Serializable {
     public Images(
         Long id,
         String url,
-        String squaredurl,
+        String squared,
         String filename,
         Integer width,
         Integer height,
@@ -47,7 +47,7 @@ public class Images implements Serializable {
     ) {
         this.id = id;
         this.url = url;
-        this.squaredurl = squaredurl;
+        this.squared = squared;
         this.filename = filename;
         this.width = width;
         this.height = height;
@@ -70,10 +70,10 @@ public class Images implements Serializable {
     }
 
     /**
-     * Getter for <code>public.images.squaredurl</code>.
+     * Getter for <code>public.images.squared</code>.
      */
-    public String getSquaredurl() {
-        return this.squaredurl;
+    public String getSquared() {
+        return this.squared;
     }
 
     /**
@@ -132,11 +132,11 @@ public class Images implements Serializable {
         }
         else if (!this.url.equals(other.url))
             return false;
-        if (this.squaredurl == null) {
-            if (other.squaredurl != null)
+        if (this.squared == null) {
+            if (other.squared != null)
                 return false;
         }
-        else if (!this.squaredurl.equals(other.squaredurl))
+        else if (!this.squared.equals(other.squared))
             return false;
         if (this.filename == null) {
             if (other.filename != null)
@@ -177,7 +177,7 @@ public class Images implements Serializable {
         int result = 1;
         result = prime * result + ((this.id == null) ? 0 : this.id.hashCode());
         result = prime * result + ((this.url == null) ? 0 : this.url.hashCode());
-        result = prime * result + ((this.squaredurl == null) ? 0 : this.squaredurl.hashCode());
+        result = prime * result + ((this.squared == null) ? 0 : this.squared.hashCode());
         result = prime * result + ((this.filename == null) ? 0 : this.filename.hashCode());
         result = prime * result + ((this.width == null) ? 0 : this.width.hashCode());
         result = prime * result + ((this.height == null) ? 0 : this.height.hashCode());
@@ -192,7 +192,7 @@ public class Images implements Serializable {
 
         sb.append(id);
         sb.append(", ").append(url);
-        sb.append(", ").append(squaredurl);
+        sb.append(", ").append(squared);
         sb.append(", ").append(filename);
         sb.append(", ").append(width);
         sb.append(", ").append(height);

@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 public final class Image {
     private long id;
     private String url;
-    private String squaredUrl;
-    private String fileName;
+    private String squared;
+    private String filename;
     private int width;
     private int height;
-    private long fileSize;
+    private long filesize;
     private String alt;
 }

@@ -71,9 +71,9 @@ public class Users extends TableImpl<UsersRecord> {
     public final TableField<UsersRecord, String> IP = createField(DSL.name("ip"), SQLDataType.VARCHAR.nullable(false), this, "");
 
     /**
-     * The column <code>public.users.passcodehash</code>.
+     * The column <code>public.users.hash</code>.
      */
-    public final TableField<UsersRecord, String> PASSCODEHASH = createField(DSL.name("passcodehash"), SQLDataType.VARCHAR, this, "");
+    public final TableField<UsersRecord, String> HASH = createField(DSL.name("hash"), SQLDataType.VARCHAR, this, "");
 
     /**
      * The column <code>public.users.admin</code>.

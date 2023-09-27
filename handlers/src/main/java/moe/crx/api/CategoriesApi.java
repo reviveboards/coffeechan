@@ -28,10 +28,10 @@ public final class CategoriesApi implements Feature {
         this.categoryDao = categoryDao;
     }
 
-    @POST
+    @GET
     @Path("/create")
     @Produces(MediaType.APPLICATION_JSON)
-    public Object create(@FormParam("name") String name) {
+    public Object create(@QueryParam("name") String name) {
         if (name == null || name.isBlank()) {
             return new APIError(0, "Name can't be empty");
         }
